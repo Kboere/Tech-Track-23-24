@@ -1,0 +1,22 @@
+{
+  "name": "tech-track-23-24",
+  "version": "1.0.0",
+  "description": "Information Design Tech Track",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kboere/Tech-Track-23-24.git"
+  },
+  "author": "Kevin Boere",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kboere/Tech-Track-23-24/issues"
+  },
+  "homepage": "https://github.com/Kboere/Tech-Track-23-24#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2"
+  }
+}
