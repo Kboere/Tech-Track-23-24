@@ -1,17 +1,52 @@
-body{
-margin: 0;
-background: #000;
-color: #fff;
-}
-.container {
-    overflow-x: auto; /* Enables horizontal scrolling for the container */
-    white-space: nowrap; /* Prevents the sections from wrapping to the next line */
-  }
-
-  .section {
-    display: inline-block; /* Makes the sections display side-by-side */
-    width: 100vw; /* Sets the width of each section to the full viewport width */
-    height: 100vh; /* Sets the height of each section to 80% of the viewport height */
+* {
     margin: 0;
-    vertical-align: top; /* Aligns the top of each section with the top of the container */
+    scroll-behavior: smooth;
+  }
+  
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  
+  main {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vh;
+    height: 100vw;
+    transform-origin: top left;
+    transform: rotate(-90deg) translateX(-100vh);
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+  
+  article {
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    height: fit-content;
+    transform-origin: top left;
+    transform: rotate(90deg) translateY(-100vh);
+  }
+  
+  section {
+    width: 100vw;
+    height: 100vh;
+    overflow-y: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: monospace;
+    font-size: 3rem;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  
+  section:nth-of-type(odd) {
+    background: #111;
+    color: #fff;
+  }
+  
+  section:nth-of-type(even) {
+    background: rgb(63, 27, 27);
+    color: #fff;
   }
