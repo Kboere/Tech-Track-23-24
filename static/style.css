@@ -1,0 +1,17 @@
+body{
+margin: 0;
+background: #000;
+color: #fff;
+}
+.container {
+    overflow-x: auto; /* Enables horizontal scrolling for the container */
+    white-space: nowrap; /* Prevents the sections from wrapping to the next line */
+  }
+
+  .section {
+    display: inline-block; /* Makes the sections display side-by-side */
+    width: 100vw; /* Sets the width of each section to the full viewport width */
+    height: 100vh; /* Sets the height of each section to 80% of the viewport height */
+    margin: 0;
+    vertical-align: top; /* Aligns the top of each section with the top of the container */
+  }
