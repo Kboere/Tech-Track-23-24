@@ -50,3 +50,21 @@
     background: rgb(63, 27, 27);
     color: #fff;
   }
+
+  
+  /* CSS for the pop-up box */
+  #popup {
+    position: absolute;
+    background-color: white;
+    border: 2px solid #ccc;
+    padding: 10px;
+    z-index: 1000;
+    display: none;
+  }
+  
+  .new-point {
+    cursor: pointer;
+    z-index: 999999999;
+  }
+  
+  
