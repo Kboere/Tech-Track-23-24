@@ -6,6 +6,43 @@
   ::-webkit-scrollbar {
     display: none;
   }
+
+  h1{
+    font-size: 40px;
+  }
+  h2{
+    font-size: 30px;
+  }
+  h3{
+    font-size: 25px;
+  }
+  p{
+    font-size: 18px;
+  }
+
+  .g-center{
+    position: relative;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+  }
+
+  .g-left,
+  .g-right{
+    position: relative;
+    width: calc(50% - 60px);
+    padding: 30px;
+  }
+
+  .g-left .intro{
+    width: 80%;
+
+  }
+
+  /* ------------------------------ end of general CSS ------------------------------ */
+
   
   main {
     position: fixed;
@@ -33,8 +70,7 @@
     height: 100vh;
     overflow-y: hidden;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-wrap: wrap;
     font-family: monospace;
     font-size: 3rem;
     -webkit-backface-visibility: hidden;
@@ -59,7 +95,10 @@
     border: 2px solid #ccc;
     padding: 10px;
     z-index: 1000;
-    display: none;
+  }
+
+  #popup h2{
+    color: #000;
   }
   
   .new-point {

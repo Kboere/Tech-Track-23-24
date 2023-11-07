@@ -1,0 +1,46 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [5.2706617260802915, 51.88158219985564]
+        },
+        "properties": {
+          "name": "Geldermalsen"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [5.109914297255587, 52.089526653751875]
+        },
+        "properties": {
+          "name": "Utrecht Centraal"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [4.918401097269335, 52.34677817462704]
+        },
+        "properties": {
+          "name": "Amsterdam Amstel"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [5.661728390607083, 51.47563644846747]
+        },
+        "properties": {
+          "name": "Helmond"
+        }
+      }
+    ]
+  }
+  
