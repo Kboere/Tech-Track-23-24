@@ -38,7 +38,6 @@
 
   .g-left .intro{
     width: 80%;
-
   }
 
   /* ------------------------------ end of general CSS ------------------------------ */
@@ -76,6 +75,50 @@
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
   }
+
+  .train-part{
+    position: relative;
+    width: 100%;
+  }
+
+  .train{
+    position: fixed;
+    /* background-image: url('../images/train.svg');
+    background-repeat: no-repeat;
+    background-size: cover; */
+    bottom: 5px;
+    left: 5px;
+    width: 100%;
+    height: 50px;
+    z-index: 10;
+  }
+
+  .train img{
+    height: 50px;
+  }
+
+  .train-part .track{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    object-fit: cover;
+  }
+  .train-part .trainstation.right,
+  .train-part .trainstation.left {
+    position: absolute;
+    bottom: 3px;
+    right: 0;
+    width: auto;
+    height: 100px;
+    object-fit: cover;
+}
+
+.train-part .trainstation.left {
+    left: 0;
+}
+
   
   section:nth-of-type(odd) {
     background: #111;
