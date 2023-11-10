@@ -1,5 +1,4 @@
 <script>
-	import Bar from '../components/bar.svelte';
 	import ProvincesMap from '../components/provinces-map.svelte';
 </script>
 

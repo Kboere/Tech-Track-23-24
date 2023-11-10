@@ -147,6 +147,16 @@
   .new-point {
     cursor: pointer;
     z-index: 999999999;
+    animation: flashing 1s linear infinite;
+  }
+
+  @keyframes flashing{
+    from{
+        opacity: 1;
+    }
+    to{
+        opacity: .5;
+    }
   }
   
   

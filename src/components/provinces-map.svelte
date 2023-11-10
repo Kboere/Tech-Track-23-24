@@ -65,7 +65,7 @@
 							.attr('cy', function (d) {
 								return projection(d.geometry.coordinates)[1];
 							})
-							.attr('r', 3)
+							.attr('r', 5)
 							.style('fill', 'red')
 							.on('click', () => {
 								console.log('testen');
