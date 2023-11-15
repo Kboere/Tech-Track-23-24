@@ -3,6 +3,8 @@
 	import * as d3 from 'd3';
 
 	let geojson;
+	let selectedStation = '';
+	let stationInfo = '';
 
 	onMount(() => {
 		// Select the SVG container where you want to render the map
@@ -18,7 +20,7 @@
 				let geojson = json;
 
 				// Set the projection size after you have the geojson data
-				projection.fitSize([500, 400], geojson); // Adjust the size as needed
+				projection.fitSize([600, 600], geojson); // Adjust the size as needed
 
 				// Define the SVG path element for your features
 				const paths = svg
@@ -28,16 +30,17 @@
 					.append('path')
 					.attr('d', geoGenerator)
 					.style('stroke', '#fff')
+					.style('fill', 'transparent')
 					.style('stroke-width', 1);
 
 				console.log('GeoJSON data loaded successfully'); // Add this log
 			})
-			.catch((error) => {
-				console.error('Error loading GeoJSON:', error);
+			.catch((err) => {
+				console.error('Error loading GeoJSON:', err);
 			});
 
 		// Function to update the map and pop-up based on the selected station
-		const updateMapAndPopup = (selectedStation) => {
+		const updateMapAndTable = (selectedStation) => {
 			svg.selectAll('.new-point').remove();
 
 			// Load the GeoJSON data for trainstations
@@ -67,10 +70,21 @@
 							})
 							.attr('r', 5)
 							.style('fill', 'red')
-							.on('click', () => {
-								console.log('testen');
-								openPopup(selectedStation);
+							.on('mouseover', () => {
+								svg
+									.append('text')
+									.attr('x', projection(selectedStationFeature.geometry.coordinates)[0] + 10)
+									.attr('y', projection(selectedStationFeature.geometry.coordinates)[1])
+									.text(selectedStationFeature.properties.name)
+									.attr('class', 'station-label');
+							})
+							.on('mouseout', () => {
+								// Remove the text label on mouseout
+								svg.selectAll('.station-label').remove();
 							});
+
+						// Dynamically generate table rows based on the selected station
+						stationInfo = generateStationInfo(trainStations, selectedStation);
 					} else {
 						console.error('Station not found in GeoJSON data.');
 					}
@@ -84,47 +98,65 @@
 		document.getElementById('station-select').addEventListener('change', (event) => {
 			const selectedStation = event.target.value;
 			console.log(`Selected station: ${selectedStation}`); // Add this log
-			updateMapAndPopup(selectedStation);
+			updateMapAndTable(selectedStation);
 		});
 
-		// Function to open the pop-up and populate its content with data
-		const openPopup = (title) => {
-			document.getElementById('popup-title').textContent = title;
-			document.getElementById('popup').style.display = 'block'; // Show the pop-up
-		};
-
-		// Function to close the pop-up
-		const closePopup = () => {
-			document.getElementById('popup').style.display = 'none'; // Hide the pop-up
-		};
-
-		// Add a click event listener to the "Close" button inside the pop-up
-		document.getElementById('close-popup').addEventListener('click', () => {
-			closePopup(); // Close the pop-up when the "Close" button is clicked
-		});
+		// Function to dynamically generate table rows based on the selected station
+		function generateStationInfo(trainStations, selectedStation) {
+			return trainStations
+				.filter((station) => station.properties.name === selectedStation)
+				.map((station) => {
+					return `
+            <tr>
+                <td>Station was build in: </td>
+                <td>${station.properties.name}</td>
+            </tr>
+            <tr>
+                <td>Station's coordinates are: </td>
+                <td>${station.geometry.coordinates}</td>
+            </tr>
+            <tr>
+                <td>other data...: </td>
+                <td>${station.geometry.coordinates}</td>
+            </tr>
+        `;
+				})
+				.join('');
+		}
 	});
 </script>
 
 <div class="g-center">
-    <h1>Travelling from home to school</h1>
+	<h2>A few stations and it's history</h2>
 </div>
 
 <div class="g-left intro">
-	<p class="intro">
-		Every morning, I take the train from my house to school. It's a routine that feels like a little
-		adventure. I watch the world go by from the train window, and it's a journey full of memories
-		and new experiences. Come with me as we explore this daily trip.
-	</p>
+	<div class="tbl-header">
+		<table cellpadding="0" cellspacing="0" border="0">
+			<thead>
+				<tr>
+					<th>Trainstation of {selectedStation}</th>
+				</tr>
+			</thead>
+		</table>
+	</div>
+	<div class="tbl-content">
+		<table cellpadding="0" cellspacing="0" border="0">
+			<tbody>
+				{@html stationInfo}
+			</tbody>
+		</table>
+	</div>
 </div>
 
 <div class="g-right">
 	<label for="station-select"><h3>Choose a station</h3></label>
-	<select name="Train-stations" id="station-select">
+	<select bind:value={selectedStation} name="Train-stations" id="station-select">
 		<option value="">--Choose a station</option>
 		<option value="Geldermalsen">Geldermalsen</option>
 		<option value="Utrecht Centraal">Utrecht Centraal</option>
 		<option value="Amsterdam Amstel">Amsterdam Amstel</option>
-        <option value="Helmond">Helmond</option>
+		<option value="Helmond">Helmond</option>
 	</select>
 
 	<div id="content">
@@ -132,16 +164,10 @@
 			class="svg-area"
 			version="1.0"
 			xmlns="http://www.w3.org/2000/svg"
-			width="500"
-			height="400"
+			width="600"
+			height="600"
+			viewBox="0 0 600 600"
+			preserveAspectRatio="xMinYMin meet"
 		/>
-	</div>
-
-	<div id="popup">
-		<div class="popup-content">
-			<!-- svelte-ignore a11y-missing-content -->
-			<h2 id="popup-title" />
-			<button id="close-popup">Close</button>
-		</div>
 	</div>
 </div>
