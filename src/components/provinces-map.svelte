@@ -29,6 +29,7 @@
 					.enter()
 					.append('path')
 					.attr('d', geoGenerator)
+                    .transition()
 					.style('stroke', '#fff')
 					.style('fill', 'transparent')
 					.style('stroke-width', 1);
@@ -101,6 +102,11 @@
 			updateMapAndTable(selectedStation);
 		});
 
+		function getImageSrc(imageUrl) {
+			// You might need to handle absolute/relative paths or full URLs appropriately
+			return imageUrl;
+		}
+
 		// Function to dynamically generate table rows based on the selected station
 		function generateStationInfo(trainStations, selectedStation) {
 			return trainStations
@@ -108,16 +114,27 @@
 				.map((station) => {
 					return `
             <tr>
-                <td>Station was build in: </td>
-                <td>${station.properties.name}</td>
+                <td><img src='${station.properties.image}' alt='${station.properties.name}' /></td>
             </tr>
-            <tr>
+			<tr>
+                <td>${station.properties.name} station was build in: </td>
+                <td>${station.properties.build}</td>
+            </tr>
+			<tr>
+                <td>Carriers in this station: </td>
+                <td>${station.properties.carriers}</td>
+            </tr>
+			<tr>
+                <td>Type of station: </td>
+                <td>${station.properties.type}</td>
+            </tr>
+			<tr>
                 <td>Station's coordinates are: </td>
                 <td>${station.geometry.coordinates}</td>
             </tr>
-            <tr>
-                <td>other data...: </td>
-                <td>${station.geometry.coordinates}</td>
+			<tr>
+                <td>The NS short-code: </td>
+                <td>${station.properties.code}</td>
             </tr>
         `;
 				})
@@ -127,7 +144,7 @@
 </script>
 
 <div class="g-center">
-	<h2>A few stations and it's history</h2>
+	<h2 class="typed">A few stations and it's history</h2>
 </div>
 
 <div class="g-left intro">
@@ -153,10 +170,54 @@
 	<label for="station-select"><h3>Choose a station</h3></label>
 	<select bind:value={selectedStation} name="Train-stations" id="station-select">
 		<option value="">--Choose a station</option>
-		<option value="Geldermalsen">Geldermalsen</option>
-		<option value="Utrecht Centraal">Utrecht Centraal</option>
+		<option value="s-Hertogenbosch">s-Hertogenbosch</option>
+		<option value="Alkmaar">Alkmaar</option>
+		<option value="Almelo">Almelo</option>
+		<option value="Almere Centrum">Almere Centrum</option>
+		<option value="Alphen a/d Rijn">Alphen a/d Rijn</option>
+		<option value="Amersfoort Centraal">Amersfoort Centraal</option>
+		<option value="Amsterdam Centraal">Amsterdam Centraal</option>
 		<option value="Amsterdam Amstel">Amsterdam Amstel</option>
+		<option value="Amsterdam Sloterdijk">Amsterdam Sloterdijk</option>
+		<option value="Apeldoorn">Apeldoorn</option>
+		<option value="Arnhem Centraal">Arnhem Centraal</option>
+		<option value="Assen">Assen</option>
+		<option value="Breda">Breda</option>
+		<option value="Delft">Delft</option>
+		<option value="Den Haag Centraal">Den Haag Centraal</option>
+		<option value="Den Haag HS">Den Haag HS</option>
+		<option value="Deventer">Deventer</option>
+		<option value="Dordrecht">Dordrecht</option>
+		<option value="Ede-Wageningen">Ede-Wageningen</option>
+		<option value="Eindhoven Centraal">Eindhoven Centraal</option>
+		<option value="Enschede">Enschede</option>
+		<option value="Gouda">Gouda</option>
+		<option value="Groningen">Groningen</option>
+		<option value="Geldermalsen">Geldermalsen</option>
+		<option value="Haarlem">Haarlem</option>
+		<option value="Heerlen">Heerlen</option>
 		<option value="Helmond">Helmond</option>
+		<option value="Hengelo">Hengelo</option>
+		<option value="Hilversum">Hilversum</option>
+		<option value="Hoorn">Hoorn</option>
+		<option value="Leeuwarden">Leeuwarden</option>
+		<option value="Leiden Centraal">Leiden Centraal</option>
+		<option value="Lelystad Centrum">Lelystad Centrum</option>
+		<option value="Maastricht">Maastricht</option>
+		<option value="Nijmegen">Nijmegen</option>
+		<option value="Oss">Oss</option>
+		<option value="Roermond">Roermond</option>
+		<option value="Roosendaal">Roosendaal</option>
+		<option value="Rotterdam Centraal">Rotterdam Centraal</option>
+		<option value="Schiphol Airport">Schiphol Airport</option>
+		<option value="Sittard">Sittard</option>
+		<option value="Tilburg">Tilburg</option>
+		<option value="Utrecht Centraal">Utrecht Centraal</option>
+		<option value="Venlo">Venlo</option>
+		<option value="Vlissingen">Vlissingen</option>
+		<option value="Zaandam">Zaandam</option>
+		<option value="Zutphen">Zutphen</option>
+		<option value="Zwolle">Zwolle</option>
 	</select>
 
 	<div id="content">

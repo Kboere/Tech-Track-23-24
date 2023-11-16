@@ -5,40 +5,720 @@
         "type": "Feature",
         "geometry": {
           "type": "Point",
-          "coordinates": [5.2706617260802915, 51.88158219985564]
+          "coordinates": [5.293666038013718, 51.69057870536892]
         },
         "properties": {
-          "name": "Geldermalsen"
+          "code": "HT",
+          "name": "s-Hertogenbosch",
+          "type": "knooppuntIntercitystation",
+          "carriers": "NS",
+          "build": "1868",
+          "image": "../images/stations/HT.jpg"
         }
       },
       {
         "type": "Feature",
         "geometry": {
           "type": "Point",
-          "coordinates": [5.109914297255587, 52.089526653751875]
+          "coordinates": [4.740976059577748, 52.63778348290649]
         },
         "properties": {
-          "name": "Utrecht Centraal"
+          "code": "AMR",
+          "name": "Alkmaar",
+          "type": "knooppuntIntercitystation",
+          "carriers": "NS",
+          "build": "1865",
+          "image": "../images/stations/AMR.jpg"
         }
       },
       {
         "type": "Feature",
         "geometry": {
           "type": "Point",
-          "coordinates": [4.918401097269335, 52.34677817462704]
+          "coordinates": [6.654964213536682, 52.35735706213886]
         },
         "properties": {
-          "name": "Amsterdam Amstel"
+          "code": "AML",
+          "name": "Almelo",
+          "type": "knooppuntIntercitystation",
+          "carriers": "NS, NS Internationaal, Blauwnet",
+          "build": "1865",
+          "image": "../images/stations/AML.jpg"
         }
       },
       {
         "type": "Feature",
         "geometry": {
           "type": "Point",
-          "coordinates": [5.661728390607083, 51.47563644846747]
+          "coordinates": [5.218161019626803, 52.37513987202363]
         },
         "properties": {
-          "name": "Helmond"
+          "code": "ALM",
+          "name": "Almere Centrum",
+          "type": "knooppuntIntercitystation",
+          "carriers": "NS",
+          "build": "1887",
+          "image": "../images/stations/ALM.jpg"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [4.657559998184183, 52.124650928965295]
+        },
+        "properties": {
+          "code": "APN",
+          "name": "Alphen a/d Rijn",
+          "type": "knooppuntIntercitystation",
+          "carriers": "NS",
+          "build": "1878",
+          "image": "../images/stations/APN.jpg"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [5.374065327021119, 52.15340619329429]
+        },
+        "properties": {
+          "code": "AMF",
+          "name": "Amersfoort Centraal",
+          "type": "knooppuntIntercitystation",
+          "carriers": "NS, NS Internationaal, Connexxion",
+          "build": "1863",
+          "image": "../images/stations/AMF.jpg"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [4.900860020888514, 52.37892312366433]
+        },
+        "properties": {
+          "code": "ASD",
+          "name": "Amsterdam Centraal",
+          "type": "megastation",
+          "carriers": "NS, NS Internationaal",
+          "build": "1881",
+          "image": "../images/stations/ASD.jpg"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [4.917664181267407, 52.346266621611164]
+        },
+        "properties": {
+          "code": "ASA",
+          "name": "Amsterdam Amstel",
+          "type": "knooppuntIntercitystation",
+          "carriers": "NS",
+          "build": "1939",
+          "image": "../images/stations/ASA.jpg"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [4.838038093179355, 52.38905454220936]
+        },
+        "properties": {
+          "code": "ASS",
+          "name": "Amsterdam Sloterdijk",
+          "type": "knooppuntIntercitystation",
+          "carriers": "NS",
+          "build": "1983",
+          "image": "../images/stations/ASS.jpg"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [5.9687627456650105, 52.20954838747273]
+        },
+        "properties": {
+          "code": "APD",
+          "name": "Apeldoorn",
+          "type": "knooppuntIntercitystation",
+          "carriers": "NS, NS Internationaal, Arriva",
+          "build": "1876",
+          "image": "../images/stations/APD.jpg"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [5.8998536762089335, 51.9849853852285]
+        },
+        "properties": {
+          "code": "AH",
+          "name": "Arnhem Centraal",
+          "type": "knooppuntIntercitystation",
+          "carriers": "NS, NS Internationaal, Arriva, Breng, Abellio Rail NRW",
+          "build": "1845",
+          "image": "../images/stations/AH.jpg"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [6.570856452202952, 52.992155556564484]
+        },
+        "properties": {
+          "code": "ASN",
+          "name": "Assen",
+          "type": "knooppuntIntercitystation",
+          "carriers": "NS",
+          "build": "1870",
+          "image": "../images/stations/ASN.jpg"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [4.779841592073918, 51.59560400491395]
+        },
+        "properties": {
+          "code": "BD",
+          "name": "Breda",
+          "type": "knooppuntIntercitystation",
+          "carriers": "NS",
+          "build": "1855",
+          "image": "../images/stations/BD.jpg"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [4.3571269098212815, 52.007371462622835]
+        },
+        "properties": {
+          "code": "DT",
+          "name": "Delft",
+          "type": "knooppuntIntercitystation",
+          "carriers": "NS",
+          "build": "1847",
+          "image": "../images/stations/DT.jpg"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [4.322967393112485, 52.08093424327029]
+        },
+        "properties": {
+          "code": "GVC",
+          "name": "Den Haag Centraal",
+          "type": "megastation",
+          "carriers": "NS",
+          "build": "1973",
+          "image": "../images/stations/GVC.jpg"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [4.322906191266228, 52.070107487515834]
+        },
+        "properties": {
+          "code": "GV",
+          "name": "Den Haag HS",
+          "type": "knooppuntIntercitystation",
+          "carriers": "NS, NS Internationaal",
+          "build": "1843",
+          "image": "../images/stations/GV.jpg"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [6.160889615617222, 52.25703134286776]
+        },
+        "properties": {
+          "code": "DV",
+          "name": "Deventer",
+          "type": "knooppuntIntercitystation",
+          "carriers": "NS, NS Internationaal",
+          "build": "1865",
+          "image": "../images/stations/DV.jpg"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [4.667780240678626, 51.80748796388648]
+        },
+        "properties": {
+          "code": "DDR",
+          "name": "Dordrecht",
+          "type": "knooppuntIntercitystation",
+          "carriers": "NS, NS Internationaal, Arriva",
+          "build": "1872",
+          "image": "../images/stations/DDR.jpg"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [5.67149366378742, 52.028122801527566]
+        },
+        "properties": {
+          "code": "ED",
+          "name": "Ede-Wageningen",
+          "type": "knooppuntIntercitystation",
+          "carriers": "NS, Connexxion",
+          "build": "1845",
+          "image": "../images/stations/ED.jpg"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [5.480796390217153, 51.443128084610855]
+        },
+        "properties": {
+          "code": "EHV",
+          "name": "Eindhoven Centraal",
+          "type": "megastation",
+          "carriers": "NS",
+          "build": "1866",
+          "image": "../images/stations/EHV.jpg"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [6.890850814806273, 52.222570318551554]
+        },
+        "properties": {
+          "code": "ES",
+          "name": "Enschede",
+          "type": "knooppuntIntercitystation",
+          "carriers": "NS, Blauwnet, DB Regio",
+          "build": "1966",
+          "image": "../images/stations/ES.jpg"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [4.705664750059531, 52.017574570407064]
+        },
+        "properties": {
+          "code": "GD",
+          "name": "Gouda",
+          "type": "knooppuntIntercitystation",
+          "carriers": "NS",
+          "build": "1855",
+          "image": "../images/stations/GD.jpg"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [6.565336587122767, 53.210990389955995]
+        },
+        "properties": {
+          "code": "GN",
+          "name": "Groningen",
+          "type": "knooppuntIntercitystation",
+          "carriers": "NS, Arriva",
+          "build": "1896",
+          "image": "../images/stations/GN.jpg"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [5.271618990209046, 51.88244186580137]
+        },
+        "properties": {
+          "code": "GDM",
+          "name": "Geldermalsen",
+          "type": "knooppuntStoptreinstation",
+          "carriers": "NS, Arriva",
+          "build": "1868",
+          "image": "../images/stations/GDM.jpg"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [4.63858015031391, 52.388086159532484]
+        },
+        "properties": {
+          "code": "HLM",
+          "name": "Haarlem",
+          "type": "knooppuntIntercitystation",
+          "carriers": "NS",
+          "build": "1839",
+          "image": "../images/stations/HLM.jpg"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [5.9749803761660205, 50.89083340459788]
+        },
+        "properties": {
+          "code": "HRL",
+          "name": "Heerlen",
+          "type": "knooppuntIntercitystation",
+          "carriers": "NS, Arriva, DB Regio",
+          "build": "1896",
+          "image": "../images/stations/HRL.jpg"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [5.661955574875123, 51.47554948259815]
+        },
+        "properties": {
+          "code": "HM",
+          "name": "Helmond",
+          "type": "knooppuntIntercitystation",
+          "carriers": "NS",
+          "build": "1866",
+          "image": "../images/stations/HM.jpg"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [6.793650362340406, 52.261878835256]
+        },
+        "properties": {
+          "code": "HGL",
+          "name": "Hengelo",
+          "type": "knooppuntIntercitystation",
+          "carriers": "NS, NS Internationaal, Blauwnet",
+          "build": "1865",
+          "image": "../images/stations/HGL.jpg"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [5.181506879143316, 52.22678742638547]
+        },
+        "properties": {
+          "code": "HVS",
+          "name": "Hilversum",
+          "type": "knooppuntIntercitystation",
+          "carriers": "NS, NS Internationaal",
+          "build": "1874",
+          "image": "../images/stations/HVS.jpg"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [5.053946268055251, 52.645348201403245]
+        },
+        "properties": {
+          "code": "HN",
+          "name": "Hoorn",
+          "type": "knooppuntIntercitystation",
+          "carriers": "NS, Museum Stoomtram Hoorn - Medemblik",
+          "build": "1883",
+          "image": "../images/stations/HN.jpg"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [5.792750735002863, 53.19631642398624]
+        },
+        "properties": {
+          "code": "LW",
+          "name": "Leeuwarden",
+          "type": "knooppuntIntercitystation",
+          "carriers": "NS, Arrvia",
+          "build": "1863",
+          "image": "../images/stations/LW.jpg"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [4.4820352540066715, 52.16614840277933]
+        },
+        "properties": {
+          "code": "LEDN",
+          "name": "Leiden Centraal",
+          "type": "knooppuntIntercitystation",
+          "carriers": "NS",
+          "build": "1842",
+          "image": "../images/stations/LEDN.jpg"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [5.472853293528575, 52.50771754628655]
+        },
+        "properties": {
+          "code": "LLS",
+          "name": "Lelystad Centrum",
+          "type": "knooppuntIntercitystation",
+          "carriers": "NS",
+          "build": "1988",
+          "image": "../images/stations/LLS.jpg"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [5.705591803686524, 50.85006185647685]
+        },
+        "properties": {
+          "code": "MT",
+          "name": "Maastricht",
+          "type": "knooppuntIntercitystation",
+          "carriers": "NS, Arriva",
+          "build": "1853",
+          "image": "../images/stations/MT.jpg"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [5.852891223307304, 51.84314893055324]
+        },
+        "properties": {
+          "code": "NM",
+          "name": "Nijmegen",
+          "type": "knooppuntIntercitystation",
+          "carriers": "NS, Veolia",
+          "build": "1865",
+          "image": "../images/stations/NM.jpg"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [5.530106150289311, 51.7650702124437]
+        },
+        "properties": {
+          "code": "O",
+          "name": "Oss",
+          "type": "knooppuntIntercitystation",
+          "carriers": "NS",
+          "build": "1881",
+          "image": "../images/stations/OSS.jpg"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [5.9940505460282365, 51.19238904278103]
+        },
+        "properties": {
+          "code": "RM",
+          "name": "Roermond",
+          "type": "knooppuntIntercitystation",
+          "carriers": "NS, Arriva",
+          "build": "1865",
+          "image": "../images/stations/RM.jpg"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [4.46325806137322, 51.543418355208956]
+        },
+        "properties": {
+          "code": "RSD",
+          "name": "Roosendaal",
+          "type": "knooppuntIntercitystation",
+          "carriers": "NS, NS Internationaal, NMBS",
+          "build": "1854",
+          "image": "../images/stations/RSD.jpg"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [4.469189448981807, 51.92511382644328]
+        },
+        "properties": {
+          "code": "RTD",
+          "name": "Rotterdam Centraal",
+          "type": "megastation",
+          "carriers": "NS, NS Internationaal",
+          "build": "1857",
+          "image": "../images/stations/RTD.jpg"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [4.762423709720258, 52.30938040090505]
+        },
+        "properties": {
+          "code": "SHL",
+          "name": "Schiphol Airport",
+          "type": "megastation",
+          "carriers": "NS, NS Internationaal",
+          "build": "1978",
+          "image": "../images/stations/SHL.jpg"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [5.858544285184611, 51.00138697840395]
+        },
+        "properties": {
+          "code": "STD",
+          "name": "Sittard",
+          "type": "knooppuntIntercitystation",
+          "carriers": "NS, Arriva",
+          "build": "1862",
+          "image": "../images/stations/STD.jpg"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [5.082870956370667, 51.56063897154664]
+        },
+        "properties": {
+          "code": "TB",
+          "name": "Tilburg",
+          "type": "knooppuntIntercitystation",
+          "carriers": "NS",
+          "build": "1863",
+          "image": "../images/stations/TB.jpg"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [5.109548661406781, 52.0893003699307]
+        },
+        "properties": {
+          "code": "UT",
+          "name": "Utrecht Centraal",
+          "type": "megastation",
+          "carriers": "NS, NS Internationaal",
+          "build": "1843",
+          "image": "../images/stations/UT.jpg"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [6.171509825139303, 51.365040206671374]
+        },
+        "properties": {
+          "code": "VL",
+          "name": "Venlo",
+          "type": "knooppuntIntercitystation",
+          "carriers": "NS, Arriva, Keolis",
+          "build": "1865",
+          "image": "../images/stations/VL.jpg"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [3.5954550023959695, 51.44412475166246]
+        },
+        "properties": {
+          "code": "VS",
+          "name": "Vlissingen",
+          "type": "knooppuntIntercitystation",
+          "carriers": "NS",
+          "build": "1873",
+          "image": "../images/stations/VS.jpg"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [4.813706629688792, 52.43864516134911]
+        },
+        "properties": {
+          "code": "ZD",
+          "name": "Zaandam",
+          "type": "knooppuntIntercitystation",
+          "carriers": "NS",
+          "build": "1889",
+          "image": "../images/stations/ZD.jpg"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [6.192837047676745, 52.144796210602614]
+        },
+        "properties": {
+          "code": "ZP",
+          "name": "Zutphen",
+          "type": "knooppuntIntercitystation",
+          "carriers": "NS, Arriva, Syntus",
+          "build": "1865",
+          "image": "../images/stations/ZP.jpg"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [6.090585873556006, 52.505509465694296]
+        },
+        "properties": {
+          "code": "ZL",
+          "name": "Zwolle",
+          "type": "knooppuntIntercitystation",
+          "carriers": "NS, Blauwnet",
+          "build": "1864",
+          "image": "../images/stations/ZL.jpg"
         }
       }
     ]
