@@ -1,5 +1,6 @@
 <script>
 	import ProvincesMap from '../components/provinces-map.svelte';
+	import RouteMap from '../components/route.svelte';
 </script>
 
 <svelte:head>
@@ -99,6 +100,9 @@
 			</div>
 		</section>
 		<section>
+
+			<RouteMap />
+
 			<div class="train-part">
 				<img
 					class="trainstation left"
@@ -114,6 +118,9 @@
 			</div>
 		</section>
 		<section>
+
+			<!-- <RouteMap routeId="utrecht" /> -->
+
 			<div class="train-part">
 				<img
 					class="trainstation left"

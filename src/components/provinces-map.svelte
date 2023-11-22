@@ -71,18 +71,18 @@
 							})
 							.attr('r', 5)
 							.style('fill', 'red')
-							.on('mouseover', () => {
-								svg
-									.append('text')
-									.attr('x', projection(selectedStationFeature.geometry.coordinates)[0] + 10)
-									.attr('y', projection(selectedStationFeature.geometry.coordinates)[1])
-									.text(selectedStationFeature.properties.name)
-									.attr('class', 'station-label');
-							})
-							.on('mouseout', () => {
-								// Remove the text label on mouseout
-								svg.selectAll('.station-label').remove();
-							});
+							// .on('mouseover', () => {
+							// 	svg
+							// 		.append('text')
+							// 		.attr('x', projection(selectedStationFeature.geometry.coordinates)[0] + 10)
+							// 		.attr('y', projection(selectedStationFeature.geometry.coordinates)[1])
+							// 		.text(selectedStationFeature.properties.name)
+							// 		.attr('class', 'station-label');
+							// })
+							// .on('mouseout', () => {
+							// 	// Remove the text label on mouseout
+							// 	svg.selectAll('.station-label').remove();
+							// });
 
 						// Dynamically generate table rows based on the selected station
 						stationInfo = generateStationInfo(trainStations, selectedStation);
@@ -101,11 +101,6 @@
 			console.log(`Selected station: ${selectedStation}`); // Add this log
 			updateMapAndTable(selectedStation);
 		});
-
-		function getImageSrc(imageUrl) {
-			// You might need to handle absolute/relative paths or full URLs appropriately
-			return imageUrl;
-		}
 
 		// Function to dynamically generate table rows based on the selected station
 		function generateStationInfo(trainStations, selectedStation) {
@@ -167,6 +162,7 @@
 </div>
 
 <div class="g-right">
+	<div class="select-province">
 	<label for="station-select"><h3>Choose a station</h3></label>
 	<select bind:value={selectedStation} name="Train-stations" id="station-select">
 		<option value="">--Choose a station</option>
@@ -219,6 +215,7 @@
 		<option value="Zutphen">Zutphen</option>
 		<option value="Zwolle">Zwolle</option>
 	</select>
+	</div>
 
 	<div id="content">
 		<svg

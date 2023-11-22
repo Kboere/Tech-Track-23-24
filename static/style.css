@@ -51,6 +51,12 @@ p {
     width: calc(60% - 60px);
 }
 
+.provinces .select-province{
+    position: absolute;
+    top: 30px;
+    left: 30px;
+}
+
 .typed.active{
     opacity: 1;
 }
@@ -121,16 +127,21 @@ section {
     font-size: 3rem;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    background: #050036;
+    background: #160235;
     color: #fff;
-    background-image: url(../images/stars.png);
+    /* background-image: url(../images/stars.png);
     background-repeat: repeat;
-    background-size: cover;
+    background-size: cover; */
 }
 
 #content{
     display: flex;
     justify-content:center;
+}
+
+#route{
+    display: flex;
+    justify-content: flex-start;
 }
 
 .train-part {
