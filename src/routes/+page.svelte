@@ -99,7 +99,7 @@
 				<img class="track" src="../images/track.svg" alt="traintrack" />
 			</div>
 		</section>
-		<section>
+		<section class="route-slide">
 
 			<RouteMap />
 
@@ -118,8 +118,6 @@
 			</div>
 		</section>
 		<section>
-
-			<!-- <RouteMap routeId="utrecht" /> -->
 
 			<div class="train-part">
 				<img

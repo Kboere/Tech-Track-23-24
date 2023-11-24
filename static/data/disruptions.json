@@ -1,0 +1,254 @@
+[
+  {
+    "rdt_id": 40664,
+    "ns_lines": "Utrecht-'s-Hertogenbosch",
+    "cause_en": "Defective",
+    "duration_minutes": 12
+  },
+  {
+    "rdt_id": 40692,
+    "ns_lines": "Utrecht-'s-Hertogenbosch",
+    "cause_en": "Accidents",
+    "duration_minutes": 1
+  },
+  {
+    "rdt_id": 40740,
+    "ns_lines": "Utrecht-'s-Hertogenbosch",
+    "cause_en": "Defective",
+    "duration_minutes": 3
+  },
+  {
+    "rdt_id": 41053,
+    "ns_lines": "Utrecht-'s-Hertogenbosch",
+    "cause_en": "Defective",
+    "duration_minutes": 3
+  },
+  {
+    "rdt_id": 41167,
+    "ns_lines": "Utrecht-'s-Hertogenbosch",
+    "cause_en": "Defective",
+    "duration_minutes": 102
+  },
+  {
+    "rdt_id": 41181,
+    "ns_lines": "Utrecht-'s-Hertogenbosch",
+    "cause_en": "Infrastructure",
+    "duration_minutes": 114
+  },
+  {
+    "rdt_id": 41249,
+    "ns_lines": "Utrecht-'s-Hertogenbosch",
+    "cause_en": "External",
+    "duration_minutes": 17
+  },
+  {
+    "rdt_id": 41309,
+    "ns_lines": "Utrecht-'s-Hertogenbosch",
+    "cause_en": "Defective",
+    "duration_minutes": 0
+  },
+  {
+    "rdt_id": 41512,
+    "ns_lines": "Utrecht-'s-Hertogenbosch",
+    "cause_en": "Defective",
+    "duration_minutes": 8
+  },
+  {
+    "rdt_id": 41518,
+    "ns_lines": "Utrecht-'s-Hertogenbosch",
+    "cause_en": "Defective",
+    "duration_minutes": 36
+  },
+  {
+    "rdt_id": 41724,
+    "ns_lines": "Utrecht-'s-Hertogenbosch",
+    "cause_en": "External",
+    "duration_minutes": 1
+  },
+  {
+    "rdt_id": 41785,
+    "ns_lines": "Utrecht-'s-Hertogenbosch",
+    "cause_en": "Defective",
+    "duration_minutes": 24
+  },
+  {
+    "rdt_id": 41790,
+    "ns_lines": "Utrecht-'s-Hertogenbosch",
+    "cause_en": "Accidents",
+    "duration_minutes": 1
+  },
+  {
+    "rdt_id": 42105,
+    "ns_lines": "Utrecht-'s-Hertogenbosch",
+    "cause_en": "External",
+    "duration_minutes": 16
+  },
+  {
+    "rdt_id": 42435,
+    "ns_lines": "Utrecht-'s-Hertogenbosch",
+    "cause_en": "Defective",
+    "duration_minutes": 51
+  },
+  {
+    "rdt_id": 42462,
+    "ns_lines": "Utrecht-'s-Hertogenbosch",
+    "cause_en": "Accidents",
+    "duration_minutes": 34
+  },
+  {
+    "rdt_id": 42904,
+    "ns_lines": "Utrecht-'s-Hertogenbosch",
+    "cause_en": "Repair works",
+    "duration_minutes": 2
+  },
+  {
+    "rdt_id": 42906,
+    "ns_lines": "Utrecht-'s-Hertogenbosch",
+    "cause_en": "Repair works",
+    "duration_minutes": 0
+  },
+  {
+    "rdt_id": 42914,
+    "ns_lines": "Utrecht-'s-Hertogenbosch",
+    "cause_en": "Repair works",
+    "duration_minutes": 1
+  },
+  {
+    "rdt_id": 42916,
+    "ns_lines": "Utrecht-'s-Hertogenbosch",
+    "cause_en": "Repair works",
+    "duration_minutes": 2
+  },
+  {
+    "rdt_id": 42920,
+    "ns_lines": "Utrecht-'s-Hertogenbosch",
+    "cause_en": "Defective",
+    "duration_minutes": 17
+  },
+  {
+    "rdt_id": 42922,
+    "ns_lines": "Utrecht-'s-Hertogenbosch",
+    "cause_en": "Repair works",
+    "duration_minutes": 1
+  },
+  {
+    "rdt_id": 43426,
+    "ns_lines": "Utrecht-'s-Hertogenbosch",
+    "cause_en": "Unknown",
+    "duration_minutes": 75
+  },
+  {
+    "rdt_id": 43531,
+    "ns_lines": "Utrecht-'s-Hertogenbosch",
+    "cause_en": "Defective",
+    "duration_minutes": 35
+  },
+  {
+    "rdt_id": 43665,
+    "ns_lines": "Utrecht-'s-Hertogenbosch",
+    "cause_en": "Infrastructure",
+    "duration_minutes": 153
+  },
+  {
+    "rdt_id": 43779,
+    "ns_lines": "Utrecht-'s-Hertogenbosch",
+    "cause_en": "Defective",
+    "duration_minutes": 17
+  },
+  {
+    "rdt_id": 43821,
+    "ns_lines": "Utrecht-'s-Hertogenbosch",
+    "cause_en": "Defective",
+    "duration_minutes": 14
+  },
+  {
+    "rdt_id": 43845,
+    "ns_lines": "Utrecht-'s-Hertogenbosch",
+    "cause_en": "Infrastructure",
+    "duration_minutes": 377
+  },
+  {
+    "rdt_id": 43864,
+    "ns_lines": "Utrecht-'s-Hertogenbosch",
+    "cause_en": "Defective",
+    "duration_minutes": 16
+  },
+  {
+    "rdt_id": 44119,
+    "ns_lines": "Utrecht-'s-Hertogenbosch",
+    "cause_en": "Infrastructure",
+    "duration_minutes": 164
+  },
+  {
+    "rdt_id": 44257,
+    "ns_lines": "Utrecht-'s-Hertogenbosch",
+    "cause_en": "Strike",
+    "duration_minutes": 433
+  },
+  {
+    "rdt_id": 44420,
+    "ns_lines": "Utrecht-'s-Hertogenbosch",
+    "cause_en": "Defective",
+    "duration_minutes": 8
+  },
+  {
+    "rdt_id": 44858,
+    "ns_lines": "Utrecht-'s-Hertogenbosch",
+    "cause_en": "Unknown",
+    "duration_minutes": 48
+  },
+  {
+    "rdt_id": 44879,
+    "ns_lines": "Utrecht-'s-Hertogenbosch",
+    "cause_en": "Defective",
+    "duration_minutes": 10
+  },
+  {
+    "rdt_id": 44880,
+    "ns_lines": "Utrecht-'s-Hertogenbosch",
+    "cause_en": "Defective",
+    "duration_minutes": 40
+  },
+  {
+    "rdt_id": 44917,
+    "ns_lines": "Utrecht-'s-Hertogenbosch",
+    "cause_en": "Defective",
+    "duration_minutes": 15
+  },
+  {
+    "rdt_id": 44984,
+    "ns_lines": "Utrecht-'s-Hertogenbosch",
+    "cause_en": "Repair works",
+    "duration_minutes": 44
+  },
+  {
+    "rdt_id": 45160,
+    "ns_lines": "Utrecht-'s-Hertogenbosch",
+    "cause_en": "Defective",
+    "duration_minutes": 3
+  },
+  {
+    "rdt_id": 45180,
+    "ns_lines": "Utrecht-'s-Hertogenbosch",
+    "cause_en": "Defective",
+    "duration_minutes": 4
+  },
+  {
+    "rdt_id": 45666,
+    "ns_lines": "Utrecht-'s-Hertogenbosch",
+    "cause_en": "Defective",
+    "duration_minutes": 4
+  },
+  {
+    "rdt_id": 45853,
+    "ns_lines": "Utrecht-'s-Hertogenbosch",
+    "cause_en": "External",
+    "duration_minutes": 55
+  },
+  {
+    "rdt_id": 45952,
+    "ns_lines": "Utrecht-'s-Hertogenbosch",
+    "cause_en": "External",
+    "duration_minutes": 37
+  }
+]

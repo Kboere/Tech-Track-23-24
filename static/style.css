@@ -1,6 +1,6 @@
 * {
     margin: 0;
-    scroll-behavior: smooth;
+    /* scroll-behavior: smooth; */
 }
 
 ::-webkit-scrollbar {
@@ -134,14 +134,9 @@ section {
     background-size: cover; */
 }
 
-#content{
+#content, #route{
     display: flex;
     justify-content:center;
-}
-
-#route{
-    display: flex;
-    justify-content: flex-start;
 }
 
 .train-part {
@@ -217,46 +212,6 @@ section {
     font-size: 5vw;
     margin: 50px 0 20px 0;
     width: 100%;
-}
-
-@keyframes flashing {
-    from {
-        opacity: 1;
-    }
-
-    to {
-        opacity: .5;
-    }
-}
-
-.fade-in {
-    animation: 1.5s fadeIn;
-}
-
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 1;
-    }
-}
-
-.fade-in-right {
-    animation: 2.5s fadeInRight;
-}
-
-@keyframes fadeInRight {
-    0% {
-        transform: translateX(-100%);
-        opacity: 0;
-    }
-
-    100% {
-        transform: translateX(0%);
-        opacity: 1;
-    }
 }
 
 /* --------------------------------- Scroll effect ----------------------------------- */
@@ -346,3 +301,150 @@ table{
   td:last-of-type{
     width: 60%;
   }
+
+  /* --------------------------------- Route-slide styling ----------------------------------- */
+  .route-slide .g-left,
+  .route-slide .g-right {
+      position: relative;
+      /* width: min-content; */
+      padding: 10px;
+  }
+  .route-slide .extra-data{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+.route-slide .extra-data table{
+    position: relative;
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 600px;
+    margin-bottom: 20px;
+}
+
+.route-slide .extra-data tr{
+    background-color: rgba(255,255,255,0.3);
+    border-radius: 10px;
+    display: block;
+    width: calc(50% - 20px);
+}
+
+.route-slide .extra-data td:first-of-type{
+    width: 30%;
+}
+
+
+  /* --------------------------------- warning-box CSS ----------------------------------- */
+
+  .route-slide .g-right .warning-box {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.route-slide .g-right .warning-box div:last-child{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 10px;
+}
+
+.route-slide .g-right .warning-box span.icon {
+    background-color: white;
+    position: relative;
+    display: block;
+    width: 40px;
+    height: 40px;
+    font-size: calc(40px / 2);
+    border-radius: 50%;
+    text-align: center;
+}
+
+.route-slide .g-right .warning-box span.icon::after {
+    content: "t";
+    position: absolute;
+    font-size: 20px;
+    color: #000;
+    line-height: 40px;
+    transform: translate(-100%, 0%);
+}
+
+.barchart{
+    margin-top: 20px;
+}
+
+text.x-axis-label{
+    font-size: 10px;
+    fill: #fff;
+}
+
+  /* --------------------------------- Barchart CSS ----------------------------------- */
+
+.barchart {
+    position: relative;
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 10px;
+}
+
+.tooltip {
+    position: absolute;
+    top: 50px;
+    left: 20px;
+}
+
+.disruption-data{
+    cursor: pointer;
+}
+
+  /* --------------------------------- CSS effects ----------------------------------- */
+
+  @keyframes flashing {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: .5;
+    }
+}
+
+.fade-in {
+    animation: 1.5s fadeIn;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.fade-in-right {
+    animation: 2.5s fadeInRight;
+}
+
+@keyframes fadeInRight {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+}
