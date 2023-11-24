@@ -113,5 +113,5 @@
 	});
 </script>
 
-<h3>Disruptions in 2022:</h3>
+<h3>Disruptions in 2022 for this traject:</h3>
 <div class="chart" />
