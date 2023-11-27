@@ -19,9 +19,13 @@ h3 {
     font-size: 25px;
 }
 
-p {
-    font-size: 18px;
+p, a {
+    font-size: 15px;
+    color: #fff;
+    text-decoration: none;
 }
+
+a{text-decoration: underline;}
 
 .g-center {
     position: relative;
@@ -303,10 +307,40 @@ table{
   }
 
   /* --------------------------------- Route-slide styling ----------------------------------- */
+.route-slide{
+    justify-content: space-evenly;
+}
+
+  .route-slide .g-left {
+    background: cadetblue;
+    border-radius: 10px;
+    width: fit-content !important;
+    overflow: visible;
+    margin-right: 10px;
+    width: calc(50% - 50px);
+}
+
+.route-slide .g-left::after {
+    position: absolute;
+    content: '';
+    clip-path: polygon(100% 50%,50% 0%,50% 100%);
+    right: -10px;
+    height: 20px;
+    top: 50%;
+    width: 20px;
+    background: cadetblue;
+}
+
+.route-slide .g-right {
+    background-color: rgba(255,255,255,0.3);
+    border-radius: 10px;
+}
+
   .route-slide .g-left,
   .route-slide .g-right {
       position: relative;
-      /* width: min-content; */
+      width: calc(50% - 40px);
+      height: fit-content;
       padding: 10px;
   }
   .route-slide .extra-data{
@@ -330,15 +364,28 @@ table{
     justify-content: space-between;
 }
 
-.route-slide .extra-data tr{
+.route-slide .extra-data tr {
     background-color: rgba(255,255,255,0.3);
     border-radius: 10px;
-    display: block;
-    width: calc(50% - 20px);
+    width: calc(50% - 30px);
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
 }
 
 .route-slide .extra-data td:first-of-type{
     width: 30%;
+}
+
+.route-slide .extra-data label{
+    width: 50%;
+    margin-right: 20px;
+}
+
+.route-slide .extra-data input#fareUnits {
+    width: calc(50% - 30px);
+    border: none;
+    border-radius: 20px;
 }
 
 
@@ -346,7 +393,7 @@ table{
 
   .route-slide .g-right .warning-box {
     position: relative;
-    width: 100%;
+    width: calc(100% - 42px);
     display: flex;
     flex-wrap: nowrap;
     border: 2px solid rgba(255,255,255,0.3);
@@ -383,6 +430,7 @@ table{
 
 .barchart{
     margin-top: 20px;
+    width: calc(100% - 42px) !important;
 }
 
 text.x-axis-label{

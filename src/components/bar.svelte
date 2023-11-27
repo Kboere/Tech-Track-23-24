@@ -8,13 +8,13 @@
 	let svg;
 
 	onMount(() => {
-		var svg = d3
+		const svg = d3
 			.select('.chart')
 			.append('svg')
 			.attr('height', height)
 			.attr('width', width)
 			.attr('viewBox', '0 0 ' + width + ' ' + height)
-			.attr('preserveAspectRatio', 'xMinYMin meet')
+			.attr('preserveAspectRatio', 'none')
 			.attr('xmlns', 'http://www.w3.org/2000/svg')
 			.style('width', '100%')
 			.style('height', 'auto');
@@ -50,12 +50,24 @@
 				const tooltip = d3.select('.chart').append('div').attr('class', 'tooltip');
 
 				svg
+					.selectAll('.center-line')
+					.data(causes)
+					.enter()
+					.append('line')
+					.attr('class', 'center-line')
+					.attr('x1', (d) => xScale(d) + xScale.bandwidth(50) - 100)
+					.attr('y1', margin.top)
+					.attr('x2', (d) => xScale(d) + xScale.bandwidth(50) - 100)
+					.attr('y2', height - margin.bottom)
+					.attr('stroke', 'rgba(255,255,255,0.3)')
+					.attr('stroke-width', 2);
+
+				svg
 					.selectAll('.circ')
 					.data(data)
 					.enter()
 					.append('circle')
 					.attr('class', 'circ')
-					.attr('stroke', 'black')
 					.attr('fill', (d) => color(d.cause_en))
 					.attr('r', (d) => size(d.duration_minutes))
 					.attr('cx', (d) => xScale(d.cause_en))
@@ -63,11 +75,10 @@
 					.on('mouseover', function () {
 						const currentData = d3.select(this).datum();
 
-						tooltip.transition().duration(200).style('opacity', 0.9);
-						tooltip
-							.html(`<p>Traject: ${currentData.ns_lines}</p><p>Duration: ${currentData.duration_minutes} minutes</p><p>Cause: ${currentData.cause_en} minutes</p>`)
-							.style('left', `${d3.event.pageX}px`)
-							.style('top', `${d3.event.pageY - 28}px`);
+						tooltip.transition().duration(200).style('opacity', 1);
+						tooltip.html(
+							`<p>Traject: ${currentData.ns_lines}</p><p>Duration: ${currentData.duration_minutes} minutes</p><p>Cause: ${currentData.cause_en} minutes</p>`
+						);
 					})
 					.on('mouseout', function () {
 						tooltip.transition().duration(500).style('opacity', 0);
@@ -75,7 +86,7 @@
 
 				let simulation = d3
 					.forceSimulation(data)
-					.force('x', d3.forceX((d) => xScale(d.cause_en)).strength(0.8))
+					.force('x', d3.forceX((d) => xScale(d.cause_en)).strength(1))
 					.force('y', d3.forceY((d) => yScale(d.duration_minutes)).strength(1))
 					.force(
 						'collide',
@@ -100,7 +111,7 @@
 					.attr(
 						'transform',
 						(d) =>
-							`translate(${xScale(d) + xScale.bandwidth() - 105},${
+							`translate(${xScale(d) + xScale.bandwidth(50) - 97.5},${
 								height - margin.bottom + 25
 							}) rotate(-90)`
 					)

@@ -1,5 +1,5 @@
 <script>
-  import BarChart from '../components/bar.svelte';
+	import BarChart from '../components/bar.svelte';
 	import { onMount } from 'svelte';
 	import * as d3 from 'd3';
 
@@ -82,23 +82,44 @@
 			.catch((err) => {
 				console.error('Error loading GeoJSON:', err);
 			});
+
+		// Function to calculate and display the total
+        function calculateTotal() {
+            // Get the value
+            var fareUnits = parseFloat(document.getElementById('fareUnits').value);
+            var total = 1.08 + (fareUnits * 0.20);
+
+            // Check if the input is a valid number
+            if (isNaN(fareUnits)) {
+                document.getElementById('result').innerHTML = `<p>Total: Please enter a valid number.</p>`;
+                return;
+            }
+
+            // Display the result in the result div
+            document.getElementById('result').innerHTML = `<p>Total: €${total.toFixed(2)}</p>`;
+        }
+        calculateTotal();
+
+        // listen when input is being changed
+        document.getElementById('fareUnits').addEventListener('input', calculateTotal);
 	});
 </script>
 
 <div class="g-center">
 	<button>Fare 1</button>
-  <button>Fare 2</button>
+	<button>Fare 2</button>
 </div>
 
 <div class="g-left">
 	<div class="extra-data">
 		<table>
-			<tr>
-				<td>Fare Units: 26</td>
-			</tr>
-			<tr>
-				<td>Tariff: €6.50</td>
-			</tr>
+				<tr>
+					<label for="fareUnits"><p>Enter Fare Units:</p></label>
+					<input type="number" id="fareUnits" placeholder="Enter fare units" value="26" />
+				</tr>
+				<tr>
+					<div id="result" />
+				</tr>
 		</table>
 	</div>
 
@@ -122,16 +143,17 @@
 		</div>
 
 		<div>
-			<h3>Calculating Tariffs</h3>
+			
 			<p>
 				To calculate the rates of a train journey, the NS uses the following method: Total Fare =
 				€1,08 + (Fare Units x €0,20)
 			</p>
+
+            <a target="_blank" href="https://www.ns.nl/binaries/_ht_1667395584239/content/assets/ns-nl/tarieven/2023/tariefeenhedenkaart-vz-2023---en-.pdf">What are your fare units?</a>
 		</div>
 	</div>
 
-
-  <div class="barchart">
-    <BarChart />
-  </div>
+	<div class="barchart">
+		<BarChart />
+	</div>
 </div>
