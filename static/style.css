@@ -343,12 +343,7 @@ table{
       height: fit-content;
       padding: 10px;
   }
-  .route-slide .extra-data{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-.route-slide .extra-data table{
+.route-slide .extra-data{
     position: relative;
     border-radius: 10px;
     display: flex;
@@ -358,28 +353,13 @@ table{
     margin-bottom: 20px;
 }
 
-.route-slide .extra-data table tbody {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-}
-
-.route-slide .extra-data tr {
+.route-slide .extra-data div {
     background-color: rgba(255,255,255,0.3);
     border-radius: 10px;
     width: calc(50% - 30px);
     display: flex;
     flex-wrap: wrap;
     padding: 10px;
-}
-
-.route-slide .extra-data td:first-of-type{
-    width: 30%;
-}
-
-.route-slide .extra-data label{
-    width: 50%;
-    margin-right: 20px;
 }
 
 .route-slide .extra-data input#fareUnits {

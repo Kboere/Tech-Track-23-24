@@ -84,24 +84,24 @@
 			});
 
 		// Function to calculate and display the total
-        function calculateTotal() {
-            // Get the value
-            var fareUnits = parseFloat(document.getElementById('fareUnits').value);
-            var total = 1.08 + (fareUnits * 0.20);
+		function calculateTotal() {
+			// Get the value
+			var fareUnits = parseFloat(document.getElementById('fareUnits').value);
+			var total = 1.08 + fareUnits * 0.2;
 
-            // Check if the input is a valid number
-            if (isNaN(fareUnits)) {
-                document.getElementById('result').innerHTML = `<p>Total: Please enter a valid number.</p>`;
-                return;
-            }
+			// Check if the input is a valid number
+			if (isNaN(fareUnits)) {
+				document.getElementById('result').innerHTML = `<p>Total: Please enter a valid number.</p>`;
+				return;
+			}
 
-            // Display the result in the result div
-            document.getElementById('result').innerHTML = `<p>Total: €${total.toFixed(2)}</p>`;
-        }
-        calculateTotal();
+			// Display the result in the result div
+			document.getElementById('result').innerHTML = `<p>Total: €${total.toFixed(2)}</p>`;
+		}
+		calculateTotal();
 
-        // listen when input is being changed
-        document.getElementById('fareUnits').addEventListener('input', calculateTotal);
+		// listen when input is being changed
+		document.getElementById('fareUnits').addEventListener('input', calculateTotal);
 	});
 </script>
 
@@ -112,15 +112,11 @@
 
 <div class="g-left">
 	<div class="extra-data">
-		<table>
-				<tr>
-					<label for="fareUnits"><p>Enter Fare Units:</p></label>
-					<input type="number" id="fareUnits" placeholder="Enter fare units" value="26" />
-				</tr>
-				<tr>
-					<div id="result" />
-				</tr>
-		</table>
+		<div>
+			<label for="fareUnits"><p>Enter Fare Units:</p></label>
+			<input type="number" id="fareUnits" placeholder="Enter fare units" value="26" />
+		</div>
+		<div id="result" />
 	</div>
 
 	<div id="route">
@@ -143,13 +139,16 @@
 		</div>
 
 		<div>
-			
 			<p>
 				To calculate the rates of a train journey, the NS uses the following method: Total Fare =
 				€1,08 + (Fare Units x €0,20)
 			</p>
 
-            <a target="_blank" href="https://www.ns.nl/binaries/_ht_1667395584239/content/assets/ns-nl/tarieven/2023/tariefeenhedenkaart-vz-2023---en-.pdf">What are your fare units?</a>
+			<a
+				target="_blank"
+				href="https://www.ns.nl/binaries/_ht_1667395584239/content/assets/ns-nl/tarieven/2023/tariefeenhedenkaart-vz-2023---en-.pdf"
+				>What are your fare units?</a
+			>
 		</div>
 	</div>
 
