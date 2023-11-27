@@ -1,14 +1,26 @@
 <script>
-	import { onMount } from 'svelte';
+	import { onMount, afterUpdate } from 'svelte';
 	import * as d3 from 'd3';
+
+	export let isFare1;
+	export let defaultFareUnits;
 
 	let width = 800;
 	let height = 500;
 	let margin = { top: 50, right: 50, bottom: 100, left: 50 }; // Increased bottom margin to make room for x-axis labels
 	let svg;
+	let allData = [];
+	let filteredData = [];
+
+	let yScale;
+	let xScale;
+	let color;
+	let size;
+	let simulation;
+	let tooltip;
 
 	onMount(() => {
-		const svg = d3
+		svg = d3
 			.select('.chart')
 			.append('svg')
 			.attr('height', height)
@@ -21,10 +33,10 @@
 
 		d3.json('data/disruptions.json')
 			.then(function (json) {
-				let data = json;
+				allData = json;
 
 				// Use reduce to get unique causes
-				let groupedData = data.reduce((result, current) => {
+				let groupedData = allData.reduce((result, current) => {
 					const key = current.cause_en;
 					(result[key] || (result[key] = [])).push(current);
 					return result;
@@ -32,22 +44,27 @@
 
 				let causes = Object.keys(groupedData);
 
-				let xScale = d3
+				// Set initial filtered data based on isFare1
+				filteredData = isFare1
+					? allData.filter((d) => d.ns_lines === "Utrecht-'s-Hertogenbosch")
+					: allData.filter((d) => d.ns_lines === 'Amsterdam-Utrecht');
+
+				xScale = d3
 					.scaleBand()
 					.domain(causes)
 					.range([margin.left, width - margin.right]);
 
-				let yScale = d3
+				yScale = d3
 					.scaleLinear()
-					.domain(d3.extent(data.map((d) => d.duration_minutes)))
+					.domain(d3.extent(filteredData.map((d) => d.duration_minutes)))
 					.range([height - margin.bottom, margin.top]);
 
-				let color = d3.scaleOrdinal().domain(causes).range(d3.schemePaired);
+				color = d3.scaleOrdinal().domain(causes).range(d3.schemePaired);
 
-				let durationDomain = d3.extent(data.map((d) => +d.duration_minutes));
-				let size = d3.scaleSqrt().domain(durationDomain).range([5, 20]);
+				let durationDomain = d3.extent(filteredData.map((d) => +d.duration_minutes));
+				size = d3.scaleSqrt().domain(durationDomain).range([5, 20]);
 
-				const tooltip = d3.select('.chart').append('div').attr('class', 'tooltip');
+				tooltip = d3.select('.chart').append('div').attr('class', 'tooltip');
 
 				svg
 					.selectAll('.center-line')
@@ -64,7 +81,7 @@
 
 				svg
 					.selectAll('.circ')
-					.data(data)
+					.data(filteredData)
 					.enter()
 					.append('circle')
 					.attr('class', 'circ')
@@ -77,15 +94,15 @@
 
 						tooltip.transition().duration(200).style('opacity', 1);
 						tooltip.html(
-							`<p>Traject: ${currentData.ns_lines}</p><p>Duration: ${currentData.duration_minutes} minutes</p><p>Cause: ${currentData.cause_en} minutes</p>`
+							`<p>Traject: ${currentData.ns_lines}</p><p>Duration: ${currentData.duration_minutes} minutes</p><p>Cause: ${currentData.cause_en}</p>`
 						);
 					})
 					.on('mouseout', function () {
 						tooltip.transition().duration(500).style('opacity', 0);
 					});
 
-				let simulation = d3
-					.forceSimulation(data)
+				simulation = d3
+					.forceSimulation(filteredData)
 					.force('x', d3.forceX((d) => xScale(d.cause_en)).strength(1))
 					.force('y', d3.forceY((d) => yScale(d.duration_minutes)).strength(1))
 					.force(
@@ -121,6 +138,56 @@
 			.catch((err) => {
 				console.error('Error loading JSON:', err);
 			});
+	});
+
+	afterUpdate(() => {
+		console.log('isFare1:', isFare1);
+		console.log('defaultFareUnits:', defaultFareUnits);
+
+		// Add this line to check the state of svg
+		console.log('svg:', svg);
+
+		// Update filteredData based on isFare1
+		filteredData = isFare1
+			? allData.filter((d) => d.ns_lines === "Utrecht-'s-Hertogenbosch")
+			: allData.filter((d) => d.ns_lines === 'Amsterdam-Utrecht');
+
+		// Update yScale and size scale domains based on the filteredData
+		yScale.domain(d3.extent(filteredData.map((d) => d.duration_minutes)));
+		size.domain(d3.extent(filteredData.map((d) => +d.duration_minutes)));
+
+		// Update the circles
+		svg
+			.selectAll('.circ')
+			.data(filteredData)
+			.join(
+				(enter) =>
+					enter
+						.append('circle')
+						.attr('class', 'circ')
+						.on('mouseover', function () {
+							const currentData = d3.select(this).datum();
+							tooltip.transition().duration(200).style('opacity', 1);
+							tooltip.html(
+								`<p>Traject: ${currentData.ns_lines}</p><p>Duration: ${currentData.duration_minutes} minutes</p><p>Cause: ${currentData.cause_en}</p>`
+							);
+						})
+						.on('mouseout', function () {
+							tooltip.transition().duration(500).style('opacity', 0);
+						}),
+				(update) => update,
+				(exit) => exit.remove()
+			)
+			.attr('fill', (d) => color(d.cause_en))
+			.attr('r', (d) => size(d.duration_minutes))
+			.attr('cx', (d) => xScale(d.cause_en))
+			.attr('cy', (d) => yScale(d.duration_minutes));
+
+		// Update forceSimulation with the new filteredData
+		simulation.nodes(filteredData);
+
+		// Trigger tick to update the simulation
+		simulation.alpha(1).restart();
 	});
 </script>
 

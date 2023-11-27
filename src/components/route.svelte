@@ -4,28 +4,21 @@
 	import * as d3 from 'd3';
 
 	let geojson;
+	let update;
+	let isFare1 = true;
+	let geoInterpolator;
+	let defaultFareUnits = isFare1 ? 26 : 33;
 
 	onMount(() => {
-		// Select the SVG container where you want to render the map
 		let svg = d3.select('#route svg');
-
-		// Adjust the center and scale for the desired zoom level
 		let projection = d3.geoMercator().center([5.5, 52.2]).scale(5000);
-
-		// projection.clipExtent([[100, 150], [500, 450]]);
-
 		let geoGenerator = d3.geoPath().projection(projection);
 
-		// REQUEST DATA
 		d3.json('data/provinces-netherlands.geojson')
 			.then(function (json) {
-				// Store the GeoJSON data in the geojson variable
 				geojson = json;
+				projection.fitSize([600, 600], geojson);
 
-				// Set the projection size of the geojson data
-				projection.fitSize([600, 600], geojson); // Adjust the size as needed
-
-				// Define the SVG path element for your features (map paths)
 				const paths = svg
 					.selectAll('path')
 					.data(geojson.features)
@@ -36,30 +29,40 @@
 					.style('fill', 'transparent')
 					.style('stroke-width', 1);
 
-				console.log('GeoJSON data loaded successfully'); // Add this log
+				console.log('GeoJSON data loaded successfully');
 
 				let GeldermalsenCS = [5.271618990209046, 51.88244186580137];
 				let UtrechtCS = [5.109548661406781, 52.0893003699307];
-				let geoInterpolator = d3.geoInterpolate(GeldermalsenCS, UtrechtCS);
+				let amsAmstel = [4.917664181267407, 52.346266621611164];
 				let u = 0;
 
 				function update() {
-					// Clear only the dynamically added elements
 					svg.selectAll('.dynamic-element').remove();
 
-					// Geldermalsen - utrecht
+					let coordinates;
+					if (isFare1) {
+						coordinates = [GeldermalsenCS, UtrechtCS]; // Fare 1 data
+						geoInterpolator = d3.geoInterpolate(GeldermalsenCS, UtrechtCS);
+						calculateTotal();
+					} else {
+						// Set coordinates for Fare 2 (replace with actual data)
+						coordinates = [UtrechtCS, amsAmstel];
+						// Update geoInterpolator for Fare 2
+						geoInterpolator = d3.geoInterpolate(UtrechtCS, amsAmstel);
+						calculateTotal();
+					}
+
 					svg
 						.append('path')
 						.datum({
 							type: 'Feature',
-							geometry: { type: 'LineString', coordinates: [GeldermalsenCS, UtrechtCS] }
+							geometry: { type: 'LineString', coordinates: coordinates }
 						})
 						.attr('d', geoGenerator)
 						.style('fill', 'none')
-						.style('stroke', 'red')
+						.style('stroke', isFare1 ? 'red' : 'blue') // Change color for Fare 2
 						.classed('dynamic-element', true);
 
-					// Point
 					svg
 						.append('circle')
 						.datum({
@@ -69,43 +72,44 @@
 						.attr('cx', (d) => projection(d.geometry.coordinates)[0])
 						.attr('cy', (d) => projection(d.geometry.coordinates)[1])
 						.attr('r', 5)
-						.style('fill', 'red')
+						.style('fill', isFare1 ? 'red' : 'blue') // Change color for Fare 2
 						.classed('dynamic-element', true);
 
 					u += 0.01;
 					if (u > 1) u = 0;
 				}
 
-				update(); // Initial update
-				setInterval(update, 30); // Update every 30 milliseconds
+				update();
+				setInterval(update, 30);
+
+				function calculateTotal() {
+					var fareUnits =
+						parseFloat(document.getElementById('fareUnits').value) || defaultFareUnits;
+					var total = 1.08 + fareUnits * 0.2;
+
+					document.getElementById('result').innerHTML = `<p>Total: €${total.toFixed(2)}</p>`;
+				}
+				calculateTotal();
+
+				document.getElementById('fareUnits').addEventListener('input', calculateTotal);
+
+				// Event delegation for button clicks
+				document.getElementById('fareButtons').addEventListener('click', (event) => {
+					if (event.target.tagName === 'BUTTON') {
+						isFare1 = event.target.textContent === 'Fare 1';
+						defaultFareUnits = isFare1 ? 26 : 33; // Update default value based on Fare selection
+						document.getElementById('fareUnits').value = defaultFareUnits; // Set input value to default
+						update();
+					}
+				});
 			})
 			.catch((err) => {
 				console.error('Error loading GeoJSON:', err);
 			});
-
-		// Function to calculate and display the total
-		function calculateTotal() {
-			// Get the value
-			var fareUnits = parseFloat(document.getElementById('fareUnits').value);
-			var total = 1.08 + fareUnits * 0.2;
-
-			// Check if the input is a valid number
-			if (isNaN(fareUnits)) {
-				document.getElementById('result').innerHTML = `<p>Total: Please enter a valid number.</p>`;
-				return;
-			}
-
-			// Display the result in the result div
-			document.getElementById('result').innerHTML = `<p>Total: €${total.toFixed(2)}</p>`;
-		}
-		calculateTotal();
-
-		// listen when input is being changed
-		document.getElementById('fareUnits').addEventListener('input', calculateTotal);
 	});
 </script>
 
-<div class="g-center">
+<div class="g-center" id="fareButtons">
 	<button>Fare 1</button>
 	<button>Fare 2</button>
 </div>
@@ -114,7 +118,7 @@
 	<div class="extra-data">
 		<div>
 			<label for="fareUnits"><p>Enter Fare Units:</p></label>
-			<input type="number" id="fareUnits" placeholder="Enter fare units" value="26" />
+			<input type="number" id="fareUnits" placeholder="Enter fare units" value={defaultFareUnits} />
 		</div>
 		<div id="result" />
 	</div>
@@ -153,6 +157,6 @@
 	</div>
 
 	<div class="barchart">
-		<BarChart />
+		<BarChart {isFare1} {defaultFareUnits} />
 	</div>
 </div>
