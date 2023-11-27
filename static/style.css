@@ -441,6 +441,10 @@ text.x-axis-label{
     cursor: pointer;
 }
 
+.circ{
+    cursor: pointer;
+}
+
   /* --------------------------------- CSS effects ----------------------------------- */
 
   @keyframes flashing {

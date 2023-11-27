@@ -157,6 +157,6 @@
 	</div>
 
 	<div class="barchart">
-		<BarChart {isFare1} {defaultFareUnits} />
+		<BarChart {isFare1} />
 	</div>
 </div>

@@ -3,7 +3,6 @@
 	import * as d3 from 'd3';
 
 	export let isFare1;
-	export let defaultFareUnits;
 
 	let width = 800;
 	let height = 500;
@@ -142,10 +141,6 @@
 
 	afterUpdate(() => {
 		console.log('isFare1:', isFare1);
-		console.log('defaultFareUnits:', defaultFareUnits);
-
-		// Add this line to check the state of svg
-		console.log('svg:', svg);
 
 		// Update filteredData based on isFare1
 		filteredData = isFare1

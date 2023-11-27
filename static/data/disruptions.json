@@ -134,7 +134,7 @@
 	{
 		"rdt_id": 43426,
 		"ns_lines": "Utrecht-'s-Hertogenbosch",
-		"cause_en": "Unknown",
+		"cause_en": "Logistical",
 		"duration_minutes": 75
 	},
 	{
@@ -182,7 +182,7 @@
 	{
 		"rdt_id": 44257,
 		"ns_lines": "Utrecht-'s-Hertogenbosch",
-		"cause_en": "Strike",
+		"cause_en": "Staff",
 		"duration_minutes": 433
 	},
 	{
@@ -194,7 +194,7 @@
 	{
 		"rdt_id": 44858,
 		"ns_lines": "Utrecht-'s-Hertogenbosch",
-		"cause_en": "Unknown",
+		"cause_en": "Logistical",
 		"duration_minutes": 48
 	},
 	{
@@ -387,7 +387,7 @@
 		"rdt_id": 41831,
 		"ns_lines": "Amsterdam-Utrecht",
 		"cause_en": "Repair works",
-		"duration_minutes": ""
+		"duration_minutes": 54
 	},
 	{
 		"rdt_id": 42032,
