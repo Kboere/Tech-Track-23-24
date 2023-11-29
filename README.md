@@ -1,20 +1,26 @@
-# create-svelte
+# 📊 Het D3.js Project 📊
+AutoMatch is een matching app waarbij gebruikers kunnen zoeken op events om zo te matchen met mensen die dezelfde interesse delen. Gebruikers vullen hun voorkeuren in en zoeken een evenement naar eigen keuze. Ook kunnen gebruikers evenementen toevoegen en is er de optie om aan te melden. Foto's van prachtige auto's kunnen op hun iegen profiel pagina geplaatst worden waar mensen ook kunnen onder reageren en foto's kunnen liken. Heeft de gebruiker tijdens een venet contact gehad met iemand dan kan hij/zij die toevoegen in de app om af te spreken voor een volgende keer.
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+## 🎯 Features
+Ik heb ervoor gekozen om te focussen op een aantal features. in de tabel hieronder kun je ze bekijken:
 
-## Creating a project
+| Features | 
+| ----------- | 
+| Filteren op voorkeuren | 
+| Gevonden events weergeven |
+| Evenementen toevoegen |
 
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
+## 🚀 Dit Project Gebruiken?
+Om de app te gebruiken moet je deze repository clonen. gebruik de volgende commando in jouw Terminal:
+```
+git clone https://github.com/Kboere/Blok-Tech
 ```
 
-## Developing
+Nadat je dit hebt gedaan is het noodzakelijk om alle **NPM Packeges** te downloaden. Deze kun je zien in de package.json file onder "dependencies". Gebruik hiervoor:
+```
+$ npm install (naam van package)
+```
+### Developing
 
 Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
@@ -25,7 +31,7 @@ npm run dev
 npm run dev -- --open
 ```
 
-## Building
+### Building
 
 To create a production version of your app:
 
@@ -35,4 +41,11 @@ npm run build
 
 You can preview the production build with `npm run preview`.
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+## GEFELICITEERD!🎉  je kunt de AutoMatch app gaan gebruiken!
+
+## ✍🏻 Auteur
+Dit project is gemaakt door Kevin Boere
+
+## 📜 License
+Copyright © 2023 Kevin Boere<br>
+Dit project heeft een [MIT](https://github.com/Kboere/Blok-Tech/blob/main/LICENSE) license
