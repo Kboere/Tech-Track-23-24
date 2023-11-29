@@ -32,38 +32,37 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	const typers = document.querySelectorAll('.typed');
 
-typers.forEach((typer) => {
-  const text = typer.textContent.split('');
-  typer.textContent = '';
+	typers.forEach((typer) => {
+		const text = typer.textContent.split('');
+		typer.textContent = '';
 
-  const timeSpacing = 20;
+		const timeSpacing = 20;
 
-  const observer = new IntersectionObserver(
-    (entries, observer) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          text.forEach((el, index) => {
-            setTimeout(() => {
-              typer.classList.add('active');
-              typer.textContent += el;
-            }, index * timeSpacing);
-          });
+		const observer = new IntersectionObserver(
+			(entries, observer) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						text.forEach((el, index) => {
+							setTimeout(() => {
+								typer.classList.add('active');
+								typer.textContent += el;
+							}, index * timeSpacing);
+						});
 
-          // Stop observing once the animation is triggered
-          observer.unobserve(typer);
-        }
-      });
-    },
-    { threshold: 0 } // Adjust the threshold as needed
-  );
+						// Stop observing once the animation is triggered
+						observer.unobserve(typer);
+					}
+				});
+			},
+			{ threshold: 0 } // Adjust the threshold as needed
+		);
 
-  // Start observing each "typed" element
-  observer.observe(typer);
-});
+		// Start observing each "typed" element
+		observer.observe(typer);
+	});
 
-if (typers.length === 0) {
-  console.error('No element with class "typed" found.');
-}
-
+	if (typers.length === 0) {
+		console.error('No element with class "typed" found.');
+	}
 
 });

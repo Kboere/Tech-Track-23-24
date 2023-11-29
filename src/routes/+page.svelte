@@ -141,7 +141,7 @@
 				/>
 				<img
 					class="trainstation right"
-					src="../images/links-trainstation2.svg"
+					src="../images/finish-flag.gif"
 					alt="trainstation of geldermalsen"
 				/>
 				<img class="track" src="../images/track.svg" alt="traintrack" />
