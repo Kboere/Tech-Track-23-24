@@ -17,7 +17,7 @@
 		d3.json('data/provinces-netherlands.geojson')
 			.then(function (json) {
 				geojson = json;
-				projection.fitSize([600, 600], geojson);
+				projection.fitSize([500, 500], geojson);
 
 				const paths = svg
 					.selectAll('path')
@@ -128,9 +128,9 @@
 			class="svg-area"
 			version="1.0"
 			xmlns="http://www.w3.org/2000/svg"
-			width="600"
-			height="600"
-			viewBox="0 0 600 600"
+			width="500"
+			height="500"
+			viewBox="0 0 500 500"
 			preserveAspectRatio="xMinYMin meet"
 		/>
 	</div>
@@ -139,7 +139,7 @@
 <div class="g-right">
 	<div class="warning-box">
 		<div>
-			<span class="icon">t</span>
+			<span class="icon">⚠</span>
 		</div>
 
 		<div>

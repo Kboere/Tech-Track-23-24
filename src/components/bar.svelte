@@ -6,7 +6,7 @@
 
 	let width = 800;
 	let height = 500;
-	let margin = { top: 50, right: 50, bottom: 100, left: 50 }; // Increased bottom margin to make room for x-axis labels
+	let margin = { top: 50, right: 50, bottom: 100, left: 50 };
 	let svg;
 	let allData = [];
 	let filteredData = [];
@@ -15,6 +15,7 @@
 	let xScale;
 	let color;
 	let size;
+	let durationDomain;
 	let simulation;
 	let tooltip;
 
@@ -60,10 +61,10 @@
 
 				color = d3.scaleOrdinal().domain(causes).range(d3.schemePaired);
 
-				let durationDomain = d3.extent(filteredData.map((d) => +d.duration_minutes));
+				durationDomain = d3.extent(filteredData.map((d) => +d.duration_minutes));
 				size = d3.scaleSqrt().domain(durationDomain).range([5, 20]);
 
-				tooltip = d3.select('.chart').append('div').attr('class', 'tooltip');
+				tooltip = d3.select('.tooltip').append('div');
 
 				svg
 					.selectAll('.center-line')
@@ -142,49 +143,70 @@
 	afterUpdate(() => {
 		console.log('isFare1:', isFare1);
 
-		// Update filteredData based on isFare1
-		filteredData = isFare1
-			? allData.filter((d) => d.ns_lines === "Utrecht-'s-Hertogenbosch")
-			: allData.filter((d) => d.ns_lines === 'Amsterdam-Utrecht');
+		d3.json('data/disruptions.json').then(function (json) {
+			allData = json;
 
-		// Update yScale and size scale domains based on the filteredData
-		yScale.domain(d3.extent(filteredData.map((d) => d.duration_minutes)));
-		size.domain(d3.extent(filteredData.map((d) => +d.duration_minutes)));
+			// Update filteredData based on isFare1
+			filteredData = isFare1
+				? allData.filter((d) => d.ns_lines === "Utrecht-'s-Hertogenbosch")
+				: allData.filter((d) => d.ns_lines === 'Amsterdam-Utrecht');
 
-		// Update the circles
-		svg
-			.selectAll('.circ')
-			.data(filteredData)
-			.join(
-				(enter) =>
-					enter
-						.append('circle')
-						.attr('class', 'circ')
-						.on('mouseover', function () {
-							const currentData = d3.select(this).datum();
-							tooltip.transition().duration(200).style('opacity', 1);
-							tooltip.html(
-								`<p>Traject: ${currentData.ns_lines}</p><p>Duration: ${currentData.duration_minutes} minutes</p><p>Cause: ${currentData.cause_en}</p>`
-							);
-						})
-						.on('mouseout', function () {
-							tooltip.transition().duration(500).style('opacity', 0);
-						}),
-				(update) => update,
-				(exit) => exit.remove()
-			)
-			.attr('fill', (d) => color(d.cause_en))
-			.attr('r', (d) => size(d.duration_minutes))
-			.attr('cx', (d) => xScale(d.cause_en))
-			.attr('cy', (d) => yScale(d.duration_minutes));
+			// Update yScale and size scale domains based on the filteredData
+			yScale = d3
+				.scaleLinear()
+				.domain(d3.extent(filteredData.map((d) => d.duration_minutes)))
+				.range([height - margin.bottom, margin.top]);
 
-		// Update forceSimulation with the new filteredData
-		simulation.nodes(filteredData);
+			size = d3.scaleSqrt().domain(durationDomain).range([5, 20]);
 
-		// Trigger tick to update the simulation
-		simulation.alpha(1).restart();
+			// Update the circles
+			svg
+				.selectAll('.circ')
+				.data(filteredData)
+				.join(
+					(enter) =>
+						enter
+							.append('circle')
+							.attr('class', 'circ')
+							.on('mouseover', function () {
+								const currentData = d3.select(this).datum();
+								tooltip.transition().duration(200).style('opacity', 1);
+								tooltip.html(
+									`<p>Traject: ${currentData.ns_lines}</p><p>Duration: ${currentData.duration_minutes} minutes</p><p>Cause: ${currentData.cause_en}</p>`
+								);
+							})
+							.on('mouseout', function () {
+								tooltip.transition().duration(500).style('opacity', 0);
+							}),
+					(update) => update,
+					(exit) => exit.remove()
+				)
+				.attr('fill', (d) => color(d.cause_en))
+				.attr('r', (d) => size(d.duration_minutes))
+				.attr('cx', (d) => xScale(d.cause_en))
+				.attr('cy', (d) => yScale(d.duration_minutes));
+
+			// Recalculate durationDomain based on the updated filteredData
+			durationDomain = d3.extent(filteredData.map((d) => +d.duration_minutes));
+
+			// Update forceSimulation with the new filteredData
+			simulation.nodes(filteredData);
+
+			// Trigger tick to update the simulation
+			simulation.alpha(1).restart();
+		});
 	});
 </script>
 
-<h3>Disruptions in 2022 for this traject:</h3>
+<h3>Traject disruptions in 2022:</h3>
+<div class="tooltip" />
+<!-- <select name="sortBarchart" id="sortBar">
+	<option value="">--select a sorting</option>
+	<option value="A-Z">From A-Z</option>
+	<option value="Z-A">From Z-A</option>
+	<option value="most">Most disruptions</option>
+	<option value="H-L">High to low</option>
+	<option value="L-H">Low to high</option>
+</select> -->
+
 <div class="chart" />

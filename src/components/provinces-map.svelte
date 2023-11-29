@@ -20,7 +20,7 @@
 				let geojson = json;
 
 				// Set the projection size after you have the geojson data
-				projection.fitSize([600, 600], geojson); // Adjust the size as needed
+				projection.fitSize([500, 500], geojson); // Adjust the size as needed
 
 				// Define the SVG path element for your features
 				const paths = svg
@@ -29,7 +29,7 @@
 					.enter()
 					.append('path')
 					.attr('d', geoGenerator)
-                    .transition()
+					.transition()
 					.style('stroke', '#fff')
 					.style('fill', 'transparent')
 					.style('stroke-width', 1);
@@ -70,19 +70,7 @@
 								return projection(d.geometry.coordinates)[1];
 							})
 							.attr('r', 5)
-							.style('fill', 'red')
-							// .on('mouseover', () => {
-							// 	svg
-							// 		.append('text')
-							// 		.attr('x', projection(selectedStationFeature.geometry.coordinates)[0] + 10)
-							// 		.attr('y', projection(selectedStationFeature.geometry.coordinates)[1])
-							// 		.text(selectedStationFeature.properties.name)
-							// 		.attr('class', 'station-label');
-							// })
-							// .on('mouseout', () => {
-							// 	// Remove the text label on mouseout
-							// 	svg.selectAll('.station-label').remove();
-							// });
+							.style('fill', 'red');
 
 						// Dynamically generate table rows based on the selected station
 						stationInfo = generateStationInfo(trainStations, selectedStation);
@@ -163,58 +151,58 @@
 
 <div class="g-right">
 	<div class="select-province">
-	<label for="station-select"><h3>Choose a station</h3></label>
-	<select bind:value={selectedStation} name="Train-stations" id="station-select">
-		<option value="">--Choose a station</option>
-		<option value="s-Hertogenbosch">s-Hertogenbosch</option>
-		<option value="Alkmaar">Alkmaar</option>
-		<option value="Almelo">Almelo</option>
-		<option value="Almere Centrum">Almere Centrum</option>
-		<option value="Alphen a/d Rijn">Alphen a/d Rijn</option>
-		<option value="Amersfoort Centraal">Amersfoort Centraal</option>
-		<option value="Amsterdam Centraal">Amsterdam Centraal</option>
-		<option value="Amsterdam Amstel">Amsterdam Amstel</option>
-		<option value="Amsterdam Sloterdijk">Amsterdam Sloterdijk</option>
-		<option value="Apeldoorn">Apeldoorn</option>
-		<option value="Arnhem Centraal">Arnhem Centraal</option>
-		<option value="Assen">Assen</option>
-		<option value="Breda">Breda</option>
-		<option value="Delft">Delft</option>
-		<option value="Den Haag Centraal">Den Haag Centraal</option>
-		<option value="Den Haag HS">Den Haag HS</option>
-		<option value="Deventer">Deventer</option>
-		<option value="Dordrecht">Dordrecht</option>
-		<option value="Ede-Wageningen">Ede-Wageningen</option>
-		<option value="Eindhoven Centraal">Eindhoven Centraal</option>
-		<option value="Enschede">Enschede</option>
-		<option value="Gouda">Gouda</option>
-		<option value="Groningen">Groningen</option>
-		<option value="Geldermalsen">Geldermalsen</option>
-		<option value="Haarlem">Haarlem</option>
-		<option value="Heerlen">Heerlen</option>
-		<option value="Helmond">Helmond</option>
-		<option value="Hengelo">Hengelo</option>
-		<option value="Hilversum">Hilversum</option>
-		<option value="Hoorn">Hoorn</option>
-		<option value="Leeuwarden">Leeuwarden</option>
-		<option value="Leiden Centraal">Leiden Centraal</option>
-		<option value="Lelystad Centrum">Lelystad Centrum</option>
-		<option value="Maastricht">Maastricht</option>
-		<option value="Nijmegen">Nijmegen</option>
-		<option value="Oss">Oss</option>
-		<option value="Roermond">Roermond</option>
-		<option value="Roosendaal">Roosendaal</option>
-		<option value="Rotterdam Centraal">Rotterdam Centraal</option>
-		<option value="Schiphol Airport">Schiphol Airport</option>
-		<option value="Sittard">Sittard</option>
-		<option value="Tilburg">Tilburg</option>
-		<option value="Utrecht Centraal">Utrecht Centraal</option>
-		<option value="Venlo">Venlo</option>
-		<option value="Vlissingen">Vlissingen</option>
-		<option value="Zaandam">Zaandam</option>
-		<option value="Zutphen">Zutphen</option>
-		<option value="Zwolle">Zwolle</option>
-	</select>
+		<label for="station-select"><h3>Choose a station</h3></label>
+		<select bind:value={selectedStation} name="Train-stations" id="station-select">
+			<option value="">--Choose a station</option>
+			<option value="s-Hertogenbosch">s-Hertogenbosch</option>
+			<option value="Alkmaar">Alkmaar</option>
+			<option value="Almelo">Almelo</option>
+			<option value="Almere Centrum">Almere Centrum</option>
+			<option value="Alphen a/d Rijn">Alphen a/d Rijn</option>
+			<option value="Amersfoort Centraal">Amersfoort Centraal</option>
+			<option value="Amsterdam Centraal">Amsterdam Centraal</option>
+			<option value="Amsterdam Amstel">Amsterdam Amstel</option>
+			<option value="Amsterdam Sloterdijk">Amsterdam Sloterdijk</option>
+			<option value="Apeldoorn">Apeldoorn</option>
+			<option value="Arnhem Centraal">Arnhem Centraal</option>
+			<option value="Assen">Assen</option>
+			<option value="Breda">Breda</option>
+			<option value="Delft">Delft</option>
+			<option value="Den Haag Centraal">Den Haag Centraal</option>
+			<option value="Den Haag HS">Den Haag HS</option>
+			<option value="Deventer">Deventer</option>
+			<option value="Dordrecht">Dordrecht</option>
+			<option value="Ede-Wageningen">Ede-Wageningen</option>
+			<option value="Eindhoven Centraal">Eindhoven Centraal</option>
+			<option value="Enschede">Enschede</option>
+			<option value="Gouda">Gouda</option>
+			<option value="Groningen">Groningen</option>
+			<option value="Geldermalsen">Geldermalsen</option>
+			<option value="Haarlem">Haarlem</option>
+			<option value="Heerlen">Heerlen</option>
+			<option value="Helmond">Helmond</option>
+			<option value="Hengelo">Hengelo</option>
+			<option value="Hilversum">Hilversum</option>
+			<option value="Hoorn">Hoorn</option>
+			<option value="Leeuwarden">Leeuwarden</option>
+			<option value="Leiden Centraal">Leiden Centraal</option>
+			<option value="Lelystad Centrum">Lelystad Centrum</option>
+			<option value="Maastricht">Maastricht</option>
+			<option value="Nijmegen">Nijmegen</option>
+			<option value="Oss">Oss</option>
+			<option value="Roermond">Roermond</option>
+			<option value="Roosendaal">Roosendaal</option>
+			<option value="Rotterdam Centraal">Rotterdam Centraal</option>
+			<option value="Schiphol Airport">Schiphol Airport</option>
+			<option value="Sittard">Sittard</option>
+			<option value="Tilburg">Tilburg</option>
+			<option value="Utrecht Centraal">Utrecht Centraal</option>
+			<option value="Venlo">Venlo</option>
+			<option value="Vlissingen">Vlissingen</option>
+			<option value="Zaandam">Zaandam</option>
+			<option value="Zutphen">Zutphen</option>
+			<option value="Zwolle">Zwolle</option>
+		</select>
 	</div>
 
 	<div id="content">
@@ -222,9 +210,9 @@
 			class="svg-area"
 			version="1.0"
 			xmlns="http://www.w3.org/2000/svg"
-			width="600"
-			height="600"
-			viewBox="0 0 600 600"
+			width="500"
+			height="500"
+			viewBox="0 0 500 500"
 			preserveAspectRatio="xMinYMin meet"
 		/>
 	</div>
