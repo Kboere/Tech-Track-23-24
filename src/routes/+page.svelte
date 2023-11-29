@@ -45,7 +45,7 @@
 					The Netherlands is a country where travelling with public transport is really being supported. 
 					It has a few benefits for the environment but also for students. 
 					Because the trains run on electricity, they emit nothing and public transport is made free during the week for students so they can go to school. 
-					<br><br>
+					
 					So I also use public transport and asked myself where the largest train stations would be.
 					That's why you see in the next slide, a map of the largest trainstations in the Netherlands with some fun facts. Scroll to see!
 				</p>
@@ -85,11 +85,9 @@
 		<section class="explain-slide">
 			<div class="center-box">
 				<span>2/3</span>
-				<h3 class="fade-in">Now let's ses some data of my route</h3>
+				<h3 class="fade-in">Now let's see some data of my route</h3>
 				<p class="fade-in typed">
-					Every morning, I take the train from my house to school. 
-					Whilest scrolling through this project you will show you some fun facts of my (almost) every day little adventure to school.
-					Get to now my route!  
+					In the next slide you will see 2 fares. 1 which is from Geldermalsen to Utrecht, and the other is from Utrecht to Amsterdam Amstel. Each fare has its own data and graph which when hovering over shows extra data. Are you seeing the easter egg? it shouldn't be hard to count ;) Let's not wait anymore, go and have a look!  
 				</p>
 			</div>
 			<div class="train-part">
@@ -126,11 +124,9 @@
 		<section class="explain-slide">
 			<div class="center-box">
 				<span>3/3</span>
-				<h3 class="fade-in">Now let's ses some data of my route</h3>
+				<h3 class="fade-in">You have reached the end!</h3>
 				<p class="fade-in typed">
-					Every morning, I take the train from my house to school. 
-					Whilest scrolling through this project you will show you some fun facts of my (almost) every day little adventure to school.
-					Get to now my route!  
+					Wooww that was fast! hopefully you have enjoyed this little interactive project of my route with the train to school! Want to know more? Don't hesitate to ask! 
 				</p>
 			</div>
 
