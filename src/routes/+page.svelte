@@ -133,6 +133,21 @@
 					Get to now my route!  
 				</p>
 			</div>
+
+			<div class="confetti-piece"></div>
+			<div class="confetti-piece"></div>
+			<div class="confetti-piece"></div>
+			<div class="confetti-piece"></div>
+			<div class="confetti-piece"></div>
+			<div class="confetti-piece"></div>
+			<div class="confetti-piece"></div>
+			<div class="confetti-piece"></div>
+			<div class="confetti-piece"></div>
+			<div class="confetti-piece"></div>
+			<div class="confetti-piece"></div>
+			<div class="confetti-piece"></div>
+			<div class="confetti-piece"></div>
+
 			<div class="train-part">
 				<img
 					class="trainstation left"
