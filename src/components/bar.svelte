@@ -15,13 +15,13 @@
 	let xScale;
 	let color;
 	let size;
-	let durationDomain;
+	let durationRange;
 	let simulation;
 	let tooltip;
 
 	onMount(() => {
 		svg = d3
-			.select('.chart')
+			.select('.beeswarm')
 			.append('svg')
 			.attr('height', height)
 			.attr('width', width)
@@ -37,17 +37,26 @@
 
 				// Use reduce to get unique causes
 				let groupedData = allData.reduce((result, current) => {
+					// Extract the cause_en property from the current element
 					const key = current.cause_en;
+
+					// Check if result[key] exists; if not, initialize it as an empty array
+					// Then push the current element to the array corresponding to the cause
 					(result[key] || (result[key] = [])).push(current);
+
+					// Return the updated result object for the next iteration
 					return result;
 				}, {});
 
+				// get all unique causes in a variable
 				let causes = Object.keys(groupedData);
 
-				// Set initial filtered data based on isFare1
+				// check if isFare1 is true, else show other data
 				filteredData = isFare1
 					? allData.filter((d) => d.ns_lines === "Utrecht-'s-Hertogenbosch")
 					: allData.filter((d) => d.ns_lines === 'Amsterdam-Utrecht');
+
+				durationRange = d3.extent(filteredData.map((d) => +d.duration_minutes)); // Y-axis array containing the minimum and maximum values
 
 				xScale = d3
 					.scaleBand()
@@ -56,13 +65,12 @@
 
 				yScale = d3
 					.scaleLinear()
-					.domain(d3.extent(filteredData.map((d) => d.duration_minutes)))
+					.domain(durationRange)
 					.range([height - margin.bottom, margin.top]);
 
-				color = d3.scaleOrdinal().domain(causes).range(d3.schemePaired);
+				color = d3.scaleOrdinal().domain(causes).range(d3.schemePaired); // give color to each cause
 
-				durationDomain = d3.extent(filteredData.map((d) => +d.duration_minutes));
-				size = d3.scaleSqrt().domain(durationDomain).range([5, 20]);
+				size = d3.scaleSqrt().domain(durationRange).range([5, 20]); // set size of dots accordingly
 
 				tooltip = d3.select('.tooltip').append('div');
 
@@ -107,11 +115,11 @@
 					.force('y', d3.forceY((d) => yScale(d.duration_minutes)).strength(1))
 					.force(
 						'collide',
-						d3.forceCollide((d) => size(d.duration_minutes))
+						d3.forceCollide((d) => size(d.duration_minutes))// prevent overlapping of the dots
 					)
 					.on('tick', tick);
 
-				function tick() {
+				function tick() {// updates each circle as simulation progresses
 					svg
 						.selectAll('.circ')
 						.attr('cx', (d) => d.x)
@@ -140,24 +148,26 @@
 			});
 	});
 
+	// on update, change beeswarm
 	afterUpdate(() => {
 		console.log('isFare1:', isFare1);
 
 		d3.json('data/disruptions.json').then(function (json) {
 			allData = json;
 
-			// Update filteredData based on isFare1
 			filteredData = isFare1
 				? allData.filter((d) => d.ns_lines === "Utrecht-'s-Hertogenbosch")
 				: allData.filter((d) => d.ns_lines === 'Amsterdam-Utrecht');
 
-			// Update yScale and size scale domains based on the filteredData
+			// Recalculate durationDomain based on the updated filteredData
+			durationRange = d3.extent(filteredData.map((d) => +d.duration_minutes));
+
 			yScale = d3
 				.scaleLinear()
-				.domain(d3.extent(filteredData.map((d) => d.duration_minutes)))
+				.domain(durationRange)
 				.range([height - margin.bottom, margin.top]);
 
-			size = d3.scaleSqrt().domain(durationDomain).range([5, 20]);
+			size = d3.scaleSqrt().domain(durationRange).range([5, 20]);
 
 			// Update the circles
 			svg
@@ -186,9 +196,6 @@
 				.attr('cx', (d) => xScale(d.cause_en))
 				.attr('cy', (d) => yScale(d.duration_minutes));
 
-			// Recalculate durationDomain based on the updated filteredData
-			durationDomain = d3.extent(filteredData.map((d) => +d.duration_minutes));
-
 			// Update forceSimulation with the new filteredData
 			simulation.nodes(filteredData);
 
@@ -200,13 +207,5 @@
 
 <h3>Traject disruptions in 2022:</h3>
 <div class="tooltip" />
-<!-- <select name="sortBarchart" id="sortBar">
-	<option value="">--select a sorting</option>
-	<option value="A-Z">From A-Z</option>
-	<option value="Z-A">From Z-A</option>
-	<option value="most">Most disruptions</option>
-	<option value="H-L">High to low</option>
-	<option value="L-H">Low to high</option>
-</select> -->
 
-<div class="chart" />
+<div class="beeswarm" />

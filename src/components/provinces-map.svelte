@@ -2,9 +2,10 @@
 	import { onMount } from 'svelte';
 	import * as d3 from 'd3';
 
-	let geojson;
+	// let geojson;
 	let selectedStation = '';
 	let stationInfo = '';
+	let trainStations = [];
 
 	onMount(() => {
 		// Select the SVG container where you want to render the map
@@ -19,10 +20,8 @@
 				// Store the GeoJSON data in the geojson variable
 				let geojson = json;
 
-				// Set the projection size after you have the geojson data
-				projection.fitSize([500, 500], geojson); // Adjust the size as needed
+				projection.fitSize([500, 500], geojson); // set size of projected map
 
-				// Define the SVG path element for your features
 				const paths = svg
 					.selectAll('path')
 					.data(geojson.features)
@@ -48,7 +47,7 @@
 			d3.json('data/trainstations.geojson')
 				.then(function (json) {
 					console.log('Train station GeoJSON data loaded successfully');
-					const trainStations = json.features;
+					trainStations = json.features;
 
 					// Create a new point feature for the selected station
 					const selectedStationFeature = trainStations.find(
@@ -71,9 +70,6 @@
 							})
 							.attr('r', 5)
 							.style('fill', 'red');
-
-						// Dynamically generate table rows based on the selected station
-						stationInfo = generateStationInfo(trainStations, selectedStation);
 					} else {
 						console.error('Station not found in GeoJSON data.');
 					}
@@ -89,40 +85,6 @@
 			console.log(`Selected station: ${selectedStation}`); // Add this log
 			updateMapAndTable(selectedStation);
 		});
-
-		// Function to dynamically generate table rows based on the selected station
-		function generateStationInfo(trainStations, selectedStation) {
-			return trainStations
-				.filter((station) => station.properties.name === selectedStation)
-				.map((station) => {
-					return `
-            <tr>
-                <td><img src='${station.properties.image}' alt='${station.properties.name}' /></td>
-            </tr>
-			<tr>
-                <td>${station.properties.name} station was build in: </td>
-                <td>${station.properties.build}</td>
-            </tr>
-			<tr>
-                <td>Carriers in this station: </td>
-                <td>${station.properties.carriers}</td>
-            </tr>
-			<tr>
-                <td>Type of station: </td>
-                <td>${station.properties.type}</td>
-            </tr>
-			<tr>
-                <td>Station's coordinates are: </td>
-                <td>${station.geometry.coordinates}</td>
-            </tr>
-			<tr>
-                <td>The NS short-code: </td>
-                <td>${station.properties.code}</td>
-            </tr>
-        `;
-				})
-				.join('');
-		}
 	});
 </script>
 
@@ -143,7 +105,31 @@
 	<div class="tbl-content">
 		<table cellpadding="0" cellspacing="0" border="0">
 			<tbody>
-				{@html stationInfo}
+				{#each trainStations.filter((station) => station.properties.name === selectedStation) as station}
+					<tr>
+						<td><img src={station.properties.image} alt={station.properties.name} /></td>
+					</tr>
+					<tr>
+						<td>{station.properties.name} station was built in: </td>
+						<td>{station.properties.build}</td>
+					</tr>
+					<tr>
+						<td>Carriers in this station: </td>
+						<td>{station.properties.carriers}</td>
+					</tr>
+					<tr>
+						<td>Type of station: </td>
+						<td>{station.properties.type}</td>
+					</tr>
+					<tr>
+						<td>Station's coordinates are: </td>
+						<td>{station.geometry.coordinates}</td>
+					</tr>
+					<tr>
+						<td>The NS short-code: </td>
+						<td>{station.properties.code}</td>
+					</tr>
+				{/each}
 			</tbody>
 		</table>
 	</div>

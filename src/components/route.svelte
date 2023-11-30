@@ -4,20 +4,19 @@
 	import * as d3 from 'd3';
 
 	let geojson;
-	let update;
 	let isFare1 = true;
 	let geoInterpolator;
 	let defaultFareUnits = isFare1 ? 26 : 33;
 
 	onMount(() => {
 		let svg = d3.select('#route svg');
-		let projection = d3.geoMercator().center([5.5, 52.2]).scale(5000);
+		let projection = d3.geoMercator();
 		let geoGenerator = d3.geoPath().projection(projection);
 
 		d3.json('data/provinces-netherlands.geojson')
 			.then(function (json) {
 				geojson = json;
-				projection.fitSize([500, 500], geojson);
+				projection.fitSize([500, 500], geojson); // set size of projecte map
 
 				const paths = svg
 					.selectAll('path')
@@ -34,7 +33,7 @@
 				let GeldermalsenCS = [5.271618990209046, 51.88244186580137];
 				let UtrechtCS = [5.109548661406781, 52.0893003699307];
 				let amsAmstel = [4.917664181267407, 52.346266621611164];
-				let u = 0;
+				let u = 0; // steps to move
 
 				function update() {
 					svg.selectAll('.dynamic-element').remove();
@@ -83,9 +82,9 @@
 				setInterval(update, 30);
 
 				function calculateTotal() {
-					var fareUnits =
-						parseFloat(document.getElementById('fareUnits').value) || defaultFareUnits;
-					var total = 1.08 + fareUnits * 0.2;
+					const fareUnits =
+						parseFloat(document.getElementById('fareUnits').value) || defaultFareUnits; // get value of input form, else default value
+					const total = 1.08 + fareUnits * 0.2; // calculate price based on fareUnits
 
 					document.getElementById('result').innerHTML = `<p>Total: €${total.toFixed(2)}</p>`;
 				}
@@ -99,7 +98,7 @@
 						isFare1 = event.target.textContent === 'Fare 1';
 						defaultFareUnits = isFare1 ? 26 : 33; // Update default value based on Fare selection
 						document.getElementById('fareUnits').value = defaultFareUnits; // Set input value to default
-						update();
+						update(); //updates based on trigger of button
 					}
 				});
 			})
